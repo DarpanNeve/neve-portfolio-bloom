@@ -100,7 +100,7 @@ export const About = () => {
           }`}>
             About Me
           </h2>
-          <p className={`text-xl text-muted-foreground max-w-3xl mx-auto transition-all duration-1000 delay-200 ${
+          <p className={`text-xl text-foreground max-w-3xl mx-auto transition-all duration-1000 delay-200 ${
             isVisible ? 'animate-fade-in' : 'opacity-0 translate-y-8'
           }`}>
             Passionate software engineer with expertise in full-stack development, 

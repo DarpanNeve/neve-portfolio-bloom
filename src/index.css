@@ -1,11 +1,6 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
 
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
@@ -21,14 +16,14 @@ All colors MUST be HSL.
     --popover: 255 255 255;
     --popover-foreground: 15 23 42;
 
-    --primary: 99 102 241;
+    --primary: 0 0 10;
     --primary-foreground: 248 250 252;
 
     --secondary: 241 245 249;
     --secondary-foreground: 15 23 42;
 
     --muted: 248 250 252;
-    --muted-foreground: 100 116 139;
+    --muted-foreground: 15 23 42;
 
     --accent: 241 245 249;
     --accent-foreground: 15 23 42;
@@ -52,8 +47,8 @@ All colors MUST be HSL.
     --sidebar-ring: 99 102 241;
   }
 
-  .dark {
-    --background: 2 6 23;
+  :root.dark {
+    --background: 0 0 10;
     --foreground: 248 250 252;
 
     --card: 3 7 18;
@@ -63,13 +58,13 @@ All colors MUST be HSL.
     --popover-foreground: 248 250 252;
 
     --primary: 56 189 248;
-    --primary-foreground: 2 6 23;
+    --primary-foreground: 5 5 5;
 
     --secondary: 15 23 42;
     --secondary-foreground: 248 250 252;
 
     --muted: 15 23 42;
-    --muted-foreground: 148 163 184;
+    --muted-foreground: 255 255 255;
 
     --accent: 30 41 59;
     --accent-foreground: 248 250 252;
@@ -81,10 +76,10 @@ All colors MUST be HSL.
     --input: 30 41 59;
     --ring: 56 189 248;
 
-    --sidebar-background: 2 6 23;
+    --sidebar-background: 5 5 5;
     --sidebar-foreground: 248 250 252;
     --sidebar-primary: 56 189 248;
-    --sidebar-primary-foreground: 2 6 23;
+    --sidebar-primary-foreground: 5 5 5;
     --sidebar-accent: 15 23 42;
     --sidebar-accent-foreground: 248 250 252;
     --sidebar-border: 30 41 59;
@@ -125,10 +120,13 @@ All colors MUST be HSL.
 }
 
 @layer utilities {
-  .text-gradient {
-    @apply bg-gradient-to-r from-primary via-cyan-400 to-purple-400 bg-clip-text text-transparent;
-  }
-
+    .text-gradient {
+      @apply bg-gradient-to-r from-primary via-cyan-400 to-purple-400 bg-clip-text text-transparent;
+    }
+  
+    .light .text-gradient {
+      @apply bg-gradient-to-r from-blue-600 via-pink-500 to-purple-500 bg-clip-text text-transparent;
+    }
   .glassmorphism {
     background: rgba(255, 255, 255, 0.05);
     backdrop-filter: blur(10px);

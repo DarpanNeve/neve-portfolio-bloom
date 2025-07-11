@@ -38,7 +38,7 @@ export const Navbar = () => {
         <div className="flex items-center justify-between">
           {/* Logo */}
           <div className="flex items-center">
-            <a href="#home" className="text-2xl font-bold text-gradient animate-pulse-neon hover:scale-110 transition-transform duration-300">
+            <a href="#home" className="text-2xl font-bold text-gradient  hover:scale-110 transition-transform duration-300">
               DN
             </a>
           </div>

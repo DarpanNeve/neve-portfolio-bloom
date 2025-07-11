@@ -97,7 +97,7 @@ export const Projects = () => {
   ];
 
   return (
-    <section id="projects" className="py-20 lg:py-32 bg-muted/20" ref={sectionRef}>
+    <section id="projects" className="py-20 lg:py-32 bg-background" ref={sectionRef}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center mb-16">
