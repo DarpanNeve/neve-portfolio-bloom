@@ -2,11 +2,9 @@
 import { useState, useEffect, useRef } from 'react';
 import { Code, Database, Cloud, Smartphone, Settings, Zap } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
-import { Progress } from './ui/progress';
 
 export const Skills = () => {
   const [isVisible, setIsVisible] = useState(false);
-  const [progress, setProgress] = useState<{ [key: string]: number }>({});
   const sectionRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -26,78 +24,30 @@ export const Skills = () => {
     return () => observer.disconnect();
   }, []);
 
-  useEffect(() => {
-    if (isVisible) {
-      const skillLevels = {
-        'JavaScript': 95,
-        'Python': 90,
-        'React': 92,
-        'Node.js': 88,
-        'Flutter': 85,
-        'AWS': 80,
-        'Docker': 75,
-        'MongoDB': 82,
-        'PostgreSQL': 78,
-        'FastAPI': 85,
-        'Django': 80,
-        'Firebase': 88
-      };
-
-      Object.entries(skillLevels).forEach(([skill, level]) => {
-        let current = 0;
-        const increment = level / 50;
-        const timer = setInterval(() => {
-          current += increment;
-          if (current >= level) {
-            current = level;
-            clearInterval(timer);
-          }
-          setProgress(prev => ({ ...prev, [skill]: Math.floor(current) }));
-        }, 30);
-      });
-    }
-  }, [isVisible]);
-
   const skillCategories = [
     {
       title: 'Frontend Development',
       icon: <Code className="h-6 w-6" />,
       color: 'from-blue-400 to-cyan-600',
-      skills: [
-        { name: 'JavaScript', level: progress.JavaScript || 0 },
-        { name: 'React', level: progress.React || 0 },
-        { name: 'Flutter', level: progress.Flutter || 0 }
-      ]
+      skills: ['JavaScript', 'React', 'Flutter']
     },
     {
       title: 'Backend Development',
       icon: <Database className="h-6 w-6" />,
       color: 'from-green-400 to-emerald-600',
-      skills: [
-        { name: 'Python', level: progress.Python || 0 },
-        { name: 'Node.js', level: progress['Node.js'] || 0 },
-        { name: 'FastAPI', level: progress.FastAPI || 0 }
-      ]
+      skills: ['Python', 'Node.js', 'FastAPI']
     },
     {
       title: 'Cloud & DevOps',
       icon: <Cloud className="h-6 w-6" />,
       color: 'from-purple-400 to-pink-600',
-      skills: [
-        { name: 'AWS', level: progress.AWS || 0 },
-        { name: 'Docker', level: progress.Docker || 0 },
-        { name: 'Firebase', level: progress.Firebase || 0 }
-      ]
+      skills: ['AWS', 'Docker', 'Firebase']
     },
     {
       title: 'Database Systems',
       icon: <Database className="h-6 w-6" />,
       color: 'from-orange-400 to-red-600',
-      skills: [
-        { name: 'MongoDB', level: progress.MongoDB || 0 },
-        { name: 'PostgreSQL', level: progress.PostgreSQL || 0 },
-        { name: 'Django', level: progress.Django || 0 }
-      ]
+      skills: ['MongoDB', 'PostgreSQL', 'Django']
     }
   ];
 
@@ -157,19 +107,18 @@ export const Skills = () => {
                   <span className="text-foreground">{category.title}</span>
                 </CardTitle>
               </CardHeader>
-              <CardContent className="space-y-4">
-                {category.skills.map((skill, skillIndex) => (
-                  <div key={skill.name} className="space-y-2">
-                    <div className="flex justify-between text-sm">
-                      <span className="font-medium text-foreground">{skill.name}</span>
-                      <span className="text-primary font-semibold">{skill.level}%</span>
-                    </div>
-                    <Progress 
-                      value={skill.level} 
-                      className="h-2 bg-muted"
-                    />
-                  </div>
-                ))}
+              <CardContent>
+                <div className="flex flex-wrap gap-2">
+                  {category.skills.map((skill, skillIndex) => (
+                    <span 
+                      key={skill}
+                      className="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm font-medium border border-primary/20 hover:bg-primary/20 hover:scale-105 transition-all duration-300 cursor-default"
+                      style={{ animationDelay: `${index * 200 + skillIndex * 100}ms` }}
+                    >
+                      {skill}
+                    </span>
+                  ))}
+                </div>
               </CardContent>
             </Card>
           ))}
