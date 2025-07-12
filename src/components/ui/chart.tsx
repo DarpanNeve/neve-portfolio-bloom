@@ -114,7 +114,7 @@ const ChartTooltipContent = React.forwardRef<
   (
     {
       active,
-      payload: propPayload,
+      payload,
       className,
       indicator = "dot",
       hideLabel = false,
@@ -130,7 +130,6 @@ const ChartTooltipContent = React.forwardRef<
     ref
   ) => {
     const { config } = useChart()
-    const payload = propPayload as any[]
 
     const tooltipLabel = React.useMemo(() => {
       if (hideLabel || !payload?.length) {
@@ -145,7 +144,7 @@ const ChartTooltipContent = React.forwardRef<
           ? config[label as keyof typeof config]?.label || label
           : itemConfig?.label
 
-      if (labelFormatter && payload) {
+      if (labelFormatter) {
         return (
           <div className={cn("font-medium", labelClassName)}>
             {labelFormatter(value, payload)}
@@ -187,7 +186,7 @@ const ChartTooltipContent = React.forwardRef<
           {payload.map((item, index) => {
             const key = `${nameKey || item.name || item.dataKey || "value"}`
             const itemConfig = getPayloadConfigFromPayload(config, item, key)
-            const indicatorColor = color || item.payload?.fill || item.color
+            const indicatorColor = color || item.payload.fill || item.color
 
             return (
               <div
@@ -259,12 +258,11 @@ const ChartLegend = RechartsPrimitive.Legend
 
 const ChartLegendContent = React.forwardRef<
   HTMLDivElement,
-  React.ComponentProps<"div"> & {
-    payload?: any[]
-    verticalAlign?: "top" | "bottom"
-    hideIcon?: boolean
-    nameKey?: string
-  }
+  React.ComponentProps<"div"> &
+    Pick<RechartsPrimitive.LegendProps, "payload" | "verticalAlign"> & {
+      hideIcon?: boolean
+      nameKey?: string
+    }
 >(
   (
     { className, hideIcon = false, payload, verticalAlign = "bottom", nameKey },
