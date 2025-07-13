@@ -256,7 +256,7 @@ export const Contact = () => {
                     </>
                   )}
                 </Button>
-              </form>
+              </form>  
             </CardContent>
           </Card>
         </div>
