@@ -136,7 +136,7 @@ export const Projects = () => {
                     </div>
                     <div>
                       <h4 className="font-semibold text-foreground">{project.title}</h4>
-                      <p className="text-sm text-primary">{project.category}</p>
+                      <p className="text-sm">{project.category}</p>
                     </div>
                   </div>
                 </CardContent>
@@ -165,7 +165,7 @@ export const Projects = () => {
                             <CardTitle className="text-2xl font-bold text-foreground">
                               {project.title}
                             </CardTitle>
-                            <p className="text-primary font-medium">{project.category}</p>
+                            <p className=" font-medium">{project.category}</p>
                           </div>
                         </div>
                         <div className="flex space-x-2">
@@ -205,7 +205,7 @@ export const Projects = () => {
                         <h4 className="text-lg font-semibold text-foreground mb-3">Key Achievements</h4>
                         <div className="flex flex-wrap gap-2">
                           {project.metrics.map((metric) => (
-                            <Badge key={metric} variant="secondary" className="bg-primary/10 text-primary border-primary/20 hover:bg-primary/20 transition-colors duration-300">
+                            <Badge key={metric} variant="secondary" className="bg-primary/10  border-primary/20 hover:bg-primary/20 transition-colors duration-300">
                               {metric}
                             </Badge>
                           ))}

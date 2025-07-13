@@ -157,7 +157,7 @@ export const About = () => {
                 {['JavaScript', 'Python', 'React', 'Node.js', 'Flutter', 'AWS', 'Docker', 'MongoDB'].map((tech) => (
                   <span 
                     key={tech}
-                    className="px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-medium border border-primary/20 hover:bg-primary/20 transition-colors duration-300"
+                    className="px-4 py-2 bg-primary/10 rounded-full text-sm font-medium border border-primary/20 hover:bg-primary/20 transition-colors duration-300"
                   >
                     {tech}
                   </span>

@@ -112,7 +112,7 @@ export const Skills = () => {
                   {category.skills.map((skill, skillIndex) => (
                     <span 
                       key={skill}
-                      className="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm font-medium border border-primary/20 hover:bg-primary/20 hover:scale-105 transition-all duration-300 cursor-default"
+                      className="px-3 py-1 bg-primary/10  rounded-full text-sm font-medium border border-primary/20 hover:bg-primary/20 hover:scale-105 transition-all duration-300 cursor-default"
                       style={{ animationDelay: `${index * 200 + skillIndex * 100}ms` }}
                     >
                       {skill}
@@ -163,7 +163,7 @@ export const Skills = () => {
             ].map((tech, index) => (
               <span 
                 key={tech}
-                className="px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-medium border border-primary/20 hover:bg-primary/20 hover:scale-110 transition-all duration-300 cursor-default"
+                className="px-4 py-2 bg-primary/10 rounded-full text-sm font-medium border border-primary/20 hover:bg-primary/20 hover:scale-110 transition-all duration-300 cursor-default"
                 style={{ animationDelay: `${1200 + index * 50}ms` }}
               >
                 {tech}
