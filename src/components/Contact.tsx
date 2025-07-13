@@ -166,7 +166,7 @@ export const Contact = () => {
           </div>
 
           {/* Contact Form */}
-          <Card className={`glassmorphism border-primary/20 hover:border-primary/40 glow-effect transition-all duration-1000 delay-600 ${
+          {/* <Card className={`glassmorphism border-primary/20 hover:border-primary/40 glow-effect transition-all duration-1000 delay-600 ${
             isVisible ? 'animate-slide-in-right' : 'opacity-0 translate-x-8'
           }`}>
             <CardHeader>
@@ -258,7 +258,7 @@ export const Contact = () => {
                 </Button>
               </form>  
             </CardContent>
-          </Card>
+          </Card> */}
         </div>
       </div>
     </section>

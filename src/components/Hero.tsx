@@ -69,6 +69,8 @@ export const Hero = () => {
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center animate-fade-in">
             <Button 
+            onClick={() => {
+              window.open( 'https://www.linkedin.com/in/darpanneve/')}}
               size="lg" 
               className="group relative overflow-hidden bg-gradient-to-r from-primary to-cyan-500 hover:from-cyan-500 hover:to-primary text-white font-semibold px-8 py-3 rounded-full glow-effect hover:scale-105 transition-all duration-300"
             >
@@ -80,6 +82,8 @@ export const Hero = () => {
             
             <Button 
               variant="outline" 
+              onClick={() => {
+                window.open( 'https://drive.google.com/drive/folders/1zRIBlmmWRzW40bx947SKtCjhRIjcWKY7?usp=sharing')}}
               size="lg"
               className="group border-2 border-primary/50 hover:border-primary hover:bg-primary/10 font-semibold px-8 py-3 rounded-full hover:scale-105 transition-all duration-300"
             >
