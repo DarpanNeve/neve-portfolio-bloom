@@ -66,13 +66,6 @@ export const Contact = () => {
       color: 'text-blue-400'
     },
     {
-      icon: <Phone className="h-6 w-6" />,
-      title: 'Phone',
-      value: '+91 9175738441',
-      href: 'tel:+919175738441',
-      color: 'text-green-400'
-    },
-    {
       icon: <MapPin className="h-6 w-6" />,
       title: 'Location',
       value: 'India',

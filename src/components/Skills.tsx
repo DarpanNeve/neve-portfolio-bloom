@@ -156,7 +156,7 @@ export const Skills = () => {
           <h3 className="text-2xl font-bold text-foreground mb-8">Technologies I Work With</h3>
           <div className="flex flex-wrap justify-center gap-4">
             {[
-              'JavaScript', 'Python', 'Dart', 'Java', 'Kotlin', 'C/C++', 'Go',
+              'JavaScript', 'Python', 'Dart', 'Java', 'Kotlin',
               'React', 'Flutter', 'Node.js', 'Express.js', 'FastAPI', 'Django',
               'Firebase', 'Docker', 'AWS', 'GCP', 'MongoDB', 'PostgreSQL',
               'RESTful APIs', 'GraphQL', 'Git', 'CI/CD', 'Agile/Scrum'

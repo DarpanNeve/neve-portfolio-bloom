@@ -1,9 +1,9 @@
-
 import { useState, useEffect, useRef } from 'react';
 import { ExternalLink, Github, Smartphone, Globe, Server, Zap } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
 import { Button } from './ui/button';
 import { Badge } from './ui/badge';
+import { title } from 'process';
 
 export const Projects = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -36,10 +36,51 @@ export const Projects = () => {
       technologies: ['Flutter', 'AWS IoT', 'Dart', 'Firebase', 'Node.js'],
       icon: <Zap className="h-6 w-6" />,
       metrics: ['100+ Beta Testers', '30% Faster Sync', 'Real-time Monitoring'],
-      image: '/placeholder.svg',
+      image: 'https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=600&h=400&fit=crop', // Add your actual image URL
+      codeLink: null, // Add your actual GitHub link
+      liveLink: 'https://play.google.com/store/apps/details?id=com.towardimagination.soilmaster', // Add your actual live demo link
       color: 'from-green-400 to-emerald-600'
     },
     {
+      title: 'Zarity Chronic Care',
+      category: 'Healthcare App',
+      description: 'HIPAA-compliant telemedicine platform with video consultations using Agora RTC.',
+      longDescription: 'Comprehensive healthcare application built with Flutter and Django. Features secure video consultations, patient management, prescription handling, and appointment scheduling with full HIPAA compliance.',
+      technologies: ['Flutter', 'GetX', 'Django', 'Agora RTC', 'Healthcare'],
+      icon: <Smartphone className="h-6 w-6" />,
+      metrics: ['HIPAA Compliant', 'Video Consultations', 'Patient Management'],
+      image: 'https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=600&h=400&fit=crop',
+      codeLink: null,
+      liveLink: 'https://play.google.com/store/apps/details?id=zarity.care.zarity_mobile', // Set to null if no live demo available
+      color: 'from-red-400 to-rose-600'
+    },
+    {
+      title:"Vastav Intellect"
+      ,category: 'Business Consulting',
+      description: 'Developed and maintained the full-stack website for Vastav Intellect, a government-recognized IP and business consulting firm offering patent, trademark, and startup services.',
+      longDescription: 'Led the end-to-end development of Vastav Intellect, a recognized IP and business consulting platform under the Ministry of Commerce, India. Implemented full-stack architecture, showcasing services including patents, trademarks, ISO certification, compliance, and startup incubation. Optimized UI/UX for credibility and conversions. Platform supports 1,000+ clients and 1,800+ patent filings.',
+      technologies: ['React', 'Node.js', 'MongoDB', 'AWS', 'Hostinger','VPS'],
+      icon: <Globe className="h-6 w-6" />,
+      metrics: ['Patents', 'Trademarks', 'Startup Services'],
+      image: 'https://plus.unsplash.com/premium_photo-1661292120292-2687c53fccc7?fm=jpg&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDM2fHx8ZW58MHx8fHx8&ixlib=rb-4.0.3&q=60&w=3000',
+      codeLink: null,
+      liveLink: 'https://vastavintellect.com/', // Set to null if no live demo available
+      color: 'from-cyan-400 to-blue-600'
+    },
+    {
+      title: 'HireSphere',
+      category: 'AI Platform',
+      description: 'AI-powered interview automation with facial recognition and posture detection capabilities.',
+      longDescription: 'Cutting-edge recruitment platform leveraging TensorFlow.js for real-time candidate assessment. Features automated interview scheduling, AI-driven evaluation, and comprehensive analytics dashboard.',
+      technologies: ['React', 'FastAPI', 'MongoDB', 'TensorFlow.js', 'AI/ML'],
+      icon: <Zap className="h-6 w-6" />,
+      metrics: ['AI-powered', 'Facial Recognition', 'Automated Interviews'],
+      image: 'https://images.unsplash.com/photo-1553877522-43269d4ea984?w=600&h=400&fit=crop',
+      codeLink: 'https://github.com/DarpanNeve/hiresphere',
+      liveLink: 'https://hiresphere-pi.vercel.app/',
+      color: 'from-cyan-400 to-blue-600'
+    },
+     {
       title: 'Signoware',
       category: 'Desktop Application',
       description: 'Cross-platform automation tool processing 500+ daily PDFs on Windows and Linux systems.',
@@ -47,7 +88,7 @@ export const Projects = () => {
       technologies: ['Java', 'Python', 'Flutter', 'OCR', 'Cross-platform'],
       icon: <Server className="h-6 w-6" />,
       metrics: ['500+ Daily PDFs', 'Cross-platform', 'Enterprise-grade'],
-      image: '/placeholder.svg',
+      image: 'https://images.unsplash.com/photo-1586281380349-632531db7ed4?w=600&h=400&fit=crop',
       color: 'from-blue-400 to-indigo-600'
     },
     {
@@ -58,43 +99,29 @@ export const Projects = () => {
       technologies: ['React', 'FastAPI', 'PostgreSQL', 'Python', 'Docker'],
       icon: <Globe className="h-6 w-6" />,
       metrics: ['45% Throughput Gain', '60% Less Manual Work', 'Real-time Analytics'],
-      image: '/placeholder.svg',
+      image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=400&fit=crop',
       color: 'from-purple-400 to-pink-600'
     },
-    {
-      title: 'Zarity Chronic Care',
-      category: 'Healthcare App',
-      description: 'HIPAA-compliant telemedicine platform with video consultations using Agora RTC.',
-      longDescription: 'Comprehensive healthcare application built with Flutter and Django. Features secure video consultations, patient management, prescription handling, and appointment scheduling with full HIPAA compliance.',
-      technologies: ['Flutter', 'GetX', 'Django', 'Agora RTC', 'Healthcare'],
-      icon: <Smartphone className="h-6 w-6" />,
-      metrics: ['HIPAA Compliant', 'Video Consultations', 'Patient Management'],
-      image: '/placeholder.svg',
-      color: 'from-red-400 to-rose-600'
-    },
-    {
-      title: 'HireSphere',
-      category: 'AI Platform',
-      description: 'AI-powered interview automation with facial recognition and posture detection capabilities.',
-      longDescription: 'Cutting-edge recruitment platform leveraging TensorFlow.js for real-time candidate assessment. Features automated interview scheduling, AI-driven evaluation, and comprehensive analytics dashboard.',
-      technologies: ['React', 'FastAPI', 'MongoDB', 'TensorFlow.js', 'AI/ML'],
-      icon: <Zap className="h-6 w-6" />,
-      metrics: ['AI-powered', 'Facial Recognition', 'Automated Interviews'],
-      image: '/placeholder.svg',
-      color: 'from-cyan-400 to-blue-600'
-    },
-    {
-      title: 'MediConnect',
-      category: 'Healthcare Platform',
-      description: 'Comprehensive healthcare platform with geolocation services and WebRTC integration.',
-      longDescription: 'Advanced healthcare solution combining geolocation-based hospital discovery with real-time communication. Features appointment booking, medication reminders, and emergency contact systems.',
-      technologies: ['Flutter', 'Firebase', 'WebRTC', 'Geolocation', 'Healthcare'],
-      icon: <Smartphone className="h-6 w-6" />,
-      metrics: ['Geolocation Services', 'WebRTC Integration', 'Emergency Features'],
-      image: '/placeholder.svg',
-      color: 'from-teal-400 to-green-600'
-    }
+    // {
+    //   title: 'MediConnect',
+    //   category: 'Healthcare Platform',
+    //   description: 'Comprehensive healthcare platform with geolocation services and WebRTC integration.',
+    //   longDescription: 'Advanced healthcare solution combining geolocation-based hospital discovery with real-time communication. Features appointment booking, medication reminders, and emergency contact systems.',
+    //   technologies: ['Flutter', 'Firebase', 'WebRTC', 'Geolocation', 'Healthcare'],
+    //   icon: <Smartphone className="h-6 w-6" />,
+    //   metrics: ['Geolocation Services', 'WebRTC Integration', 'Emergency Features'],
+    //   image: 'https://plus.unsplash.com/premium_photo-1699387204388-120141c76d51?fm=jpg&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8aGVhbHRoY2FyZSUyMHRlY2hub2xvZ3l8ZW58MHx8MHx8fDA%3D&ixlib=rb-4.1.0&q=60&w=3000',
+    //   codeLink: null, // Set to null if code is private
+    //   liveLink: 'https://mediconnect-platform.com',
+    //   color: 'from-teal-400 to-green-600'
+    // }
   ];
+
+  const handleLinkClick = (url) => {
+    if (url) {
+      window.open(url, '_blank', 'noopener,noreferrer');
+    }
+  };
 
   return (
     <section id="projects" className="py-20 lg:py-32 bg-background" ref={sectionRef}>
@@ -169,26 +196,59 @@ export const Projects = () => {
                           </div>
                         </div>
                         <div className="flex space-x-2">
-                          <Button variant="outline" size="sm" className="hover:scale-110 transition-transform duration-300">
-                            <Github className="h-4 w-4 mr-2" />
-                            Code
-                          </Button>
-                          <Button size="sm" className="hover:scale-110 transition-transform duration-300 text-foreground">
-                            <ExternalLink className="h-4 w-4 mr-2 text-foreground" />
-                            Live Demo
-                          </Button>
+                          {project.codeLink && (
+                            <Button 
+                              variant="outline" 
+                              size="sm" 
+                              className="hover:scale-110 transition-transform duration-300"
+                              onClick={() => handleLinkClick(project.codeLink)}
+                            >
+                              <Github className="h-4 w-4 mr-2" />
+                              Code
+                            </Button>
+                          )}
+                          {project.liveLink && (
+                            <Button 
+                              size="sm" 
+                              className="hover:scale-110 transition-transform duration-300 text-foreground"
+                              onClick={() => handleLinkClick(project.liveLink)}
+                            >
+                              <ExternalLink className="h-4 w-4 mr-2 text-foreground" />
+                              Live Demo
+                            </Button>
+                          )}
+                          {!project.codeLink && !project.liveLink && (
+                            <Badge 
+                              variant="secondary" 
+                              className="bg-orange-100 text-orange-800 border-orange-200 hover:bg-orange-200 transition-colors duration-300"
+                            >
+                              Yet to Release
+                            </Badge>
+                          )}
                         </div>
                       </div>
                     </CardHeader>
                     
                     <CardContent className="space-y-6">
                       {/* Project Image */}
-                      <div className="aspect-video bg-gradient-to-br from-primary/20 to-purple-500/20 rounded-lg flex items-center justify-center border border-primary/20">
-                        <div className="text-center">
-                          <div className={`w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-r ${project.color} flex items-center justify-center text-white`}>
-                            {project.icon}
+                      <div className="aspect-video rounded-lg overflow-hidden border border-primary/20 bg-gradient-to-br from-primary/20 to-purple-500/20">
+                        {project.image ? (
+                          <img 
+                            src={project.image} 
+                            alt={`${project.title} screenshot`}
+                            className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                            onError={(e) => {
+                              
+                            }}
+                          />
+                        ) : null}
+                        <div className="w-full h-full flex items-center justify-center" style={{ display: project.image ? 'none' : 'flex' }}>
+                          <div className="text-center">
+                            <div className={`w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-r ${project.color} flex items-center justify-center text-white`}>
+                              {project.icon}
+                            </div>
+                            <p className="text-muted-foreground">Project Screenshot</p>
                           </div>
-                          <p className="text-muted-foreground">Project Screenshot</p>
                         </div>
                       </div>
 
