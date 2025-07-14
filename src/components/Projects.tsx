@@ -166,6 +166,37 @@ export const Projects = () => {
                       <p className="text-sm">{project.category}</p>
                     </div>
                   </div>
+                  <div className="flex space-x-2">
+                          {project.codeLink && (
+                            <Button 
+                              variant="outline" 
+                              size="sm" 
+                              className="hover:scale-110 transition-transform duration-300"
+                              onClick={() => handleLinkClick(project.codeLink)}
+                            >
+                              <Github className="h-4 w-4 mr-2" />
+                              Code
+                            </Button>
+                          )}
+                          {project.liveLink && (
+                            <Button 
+                              size="sm" 
+                              className="hover:scale-110 transition-transform duration-300"
+                              onClick={() => handleLinkClick(project.liveLink)}
+                            >
+                              <ExternalLink className="h-4 w-4 mr-2" />
+                              Live Demo
+                            </Button>
+                          )}
+                          {!project.codeLink && !project.liveLink && (
+                            <Badge 
+                              variant="secondary" 
+                              className="bg-orange-100 text-orange-800 border-orange-200 hover:bg-orange-200 transition-colors duration-300"
+                            >
+                              Yet to Release
+                            </Badge>
+                          )}
+                        </div>
                 </CardContent>
               </Card>
             ))}
@@ -210,10 +241,10 @@ export const Projects = () => {
                           {project.liveLink && (
                             <Button 
                               size="sm" 
-                              className="hover:scale-110 transition-transform duration-300 text-foreground"
+                              className="hover:scale-110 transition-transform duration-300 "
                               onClick={() => handleLinkClick(project.liveLink)}
                             >
-                              <ExternalLink className="h-4 w-4 mr-2 text-foreground" />
+                              <ExternalLink className="h-4 w-4 mr-2 " />
                               Live Demo
                             </Button>
                           )}
