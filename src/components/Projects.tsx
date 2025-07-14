@@ -35,7 +35,7 @@ export const Projects = () => {
       longDescription: 'A comprehensive Flutter application integrated with AWS IoT for real-time soil monitoring. Features include sensor data visualization, automated alerts, and predictive analytics for optimal farming conditions.',
       technologies: ['Flutter', 'AWS IoT', 'Dart', 'Firebase', 'Node.js'],
       icon: <Zap className="h-6 w-6" />,
-      metrics: ['100+ Beta Testers', '30% Faster Sync', 'Real-time Monitoring'],
+      metrics: ['100+ Users', '30% Faster Sync', 'Real-time Monitoring'],
       image: 'https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=600&h=400&fit=crop', // Add your actual image URL
       codeLink: null, // Add your actual GitHub link
       liveLink: 'https://play.google.com/store/apps/details?id=com.towardimagination.soilmaster', // Add your actual live demo link
