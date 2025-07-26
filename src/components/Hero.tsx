@@ -65,8 +65,8 @@ export const Hero = () => {
           {/* Description */}
           <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto mb-12 leading-relaxed animate-slide-in-right">
             I craft exceptional digital experiences with modern technologies,
-            specializing in scalable web applications and innovative mobile
-            solutions.
+            specializing in scalable mobile solutions and innovative web
+            applications.
           </p>
 
           {/* CTA Buttons */}
