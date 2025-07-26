@@ -86,6 +86,26 @@ export const Projects = () => {
       color: "from-cyan-400 to-blue-600",
     },
     {
+      title: "Jaldindi Pratishthan",
+      category: "Mobile Application",
+      description:
+        "NGO operations app with 100+ users and real-time location tracking across 22 regions.",
+      longDescription:
+        "Cross-platform mobile app built for NGO field operations, enabling volunteer coordination, document uploads, and real-time geolocation via Google Maps. Cloud backend ensures reliable performance and centralized data management.",
+      technologies: ["Flutter", "Firebase", "Google Maps API", "Dart"],
+      icon: <Smartphone className="h-6 w-6" />,
+      metrics: [
+        "100+ User Sign-ups in First Month",
+        "22+ Location Coverage",
+        "Realtime Cloud Sync",
+      ],
+      image:
+        "https://images.unsplash.com/photo-1721239571860-4f73b7e35551?w=600&h=400&fit=crop",
+      color: "from-blue-500 to-teal-400",
+      liveLink:
+        "https://play.google.com/store/apps/details?id=com.jaldindi_pratishthan.jaldindi",
+    },
+    {
       title: "HireSphere",
       category: "AI Platform",
       description:
