@@ -1,21 +1,28 @@
-
-import { useState, useEffect, useRef } from 'react';
-import { Mail, Phone, MapPin, Send, Github, Linkedin, ExternalLink } from 'lucide-react';
-import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
-import { Button } from './ui/button';
-import { Input } from './ui/input';
-import { Textarea } from './ui/textarea';
-import { toast } from '@/hooks/use-toast';
+import { useState, useEffect, useRef } from "react";
+import {
+  Mail,
+  Phone,
+  MapPin,
+  Send,
+  Github,
+  Linkedin,
+  ExternalLink,
+} from "lucide-react";
+import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
+import { Button } from "./ui/button";
+import { Input } from "./ui/input";
+import { Textarea } from "./ui/textarea";
+import { toast } from "@/hooks/use-toast";
 
 export const Contact = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const sectionRef = useRef<HTMLDivElement>(null);
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    subject: '',
-    message: ''
+    name: "",
+    email: "",
+    subject: "",
+    message: "",
   });
 
   useEffect(() => {
@@ -35,10 +42,12 @@ export const Contact = () => {
     return () => observer.disconnect();
   }, []);
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData(prev => ({
+  const handleInputChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    setFormData((prev) => ({
       ...prev,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     }));
   };
 
@@ -52,7 +61,7 @@ export const Contact = () => {
         title: "Message Sent!",
         description: "Thank you for reaching out. I'll get back to you soon!",
       });
-      setFormData({ name: '', email: '', subject: '', message: '' });
+      setFormData({ name: "", email: "", subject: "", message: "" });
       setIsSubmitting(false);
     }, 2000);
   };
@@ -60,80 +69,104 @@ export const Contact = () => {
   const contactInfo = [
     {
       icon: <Mail className="h-6 w-6" />,
-      title: 'Email',
-      value: 'darpanneve3@gmail.com',
-      href: 'mailto:darpanneve3@gmail.com',
-      color: 'text-blue-400'
+      title: "Email",
+      value: "darpanneve3@gmail.com",
+      href: "mailto:darpanneve3@gmail.com",
+      color: "text-blue-400",
     },
     {
       icon: <MapPin className="h-6 w-6" />,
-      title: 'Location',
-      value: 'India',
-      href: '#',
-      color: 'text-purple-400'
-    }
+      title: "Location",
+      value: "India",
+      href: "#",
+      color: "text-purple-400",
+    },
   ];
 
   const socialLinks = [
     {
       icon: <Github className="h-6 w-6" />,
-      title: 'GitHub',
-      href: 'https://github.com/DarpanNeve',
-      color: 'hover:text-gray-400'
+      title: "GitHub",
+      href: "https://github.com/DarpanNeve",
+      color: "hover:text-gray-400",
     },
     {
       icon: <Linkedin className="h-6 w-6" />,
-      title: 'LinkedIn',
-      href: 'https://www.linkedin.com/in/darpanneve/',
-      color: 'hover:text-blue-400'
-    }
+      title: "LinkedIn",
+      href: "https://www.linkedin.com/in/darpanneve/",
+      color: "hover:text-blue-400",
+    },
   ];
 
   return (
-    <section id="contact" className="py-20 lg:py-32 bg-background/20" ref={sectionRef}>
+    <section
+      id="contact"
+      className="py-20 lg:py-32 bg-background/20"
+      ref={sectionRef}
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <h2 className={`text-4xl md:text-5xl font-bold mb-6 text-gradient transition-all duration-1000 ${
-            isVisible ? 'animate-fade-in' : 'opacity-0 translate-y-8'
-          }`}>
+          <h2
+            className={`text-4xl md:text-5xl font-bold mb-6 text-gradient transition-all duration-1000 ${
+              isVisible ? "animate-fade-in" : "opacity-0 translate-y-8"
+            }`}
+          >
             Let's Connect
           </h2>
-          <p className={`text-xl text-muted-foreground max-w-3xl mx-auto transition-all duration-1000 delay-200 ${
-            isVisible ? 'animate-fade-in' : 'opacity-0 translate-y-8'
-          }`}>
-            Ready to collaborate on your next project? Let's discuss how we can bring your ideas to life.
+          <p
+            className={`text-xl text-muted-foreground max-w-3xl mx-auto transition-all duration-1000 delay-200 ${
+              isVisible ? "animate-fade-in" : "opacity-0 translate-y-8"
+            }`}
+          >
+            Ready to collaborate on your next project? Let's discuss how we can
+            bring your ideas to life.
           </p>
         </div>
 
         <div className="grid lg:grid-cols-2 gap-12">
           {/* Contact Information */}
-          <div className={`space-y-8 transition-all duration-1000 delay-400 ${
-            isVisible ? 'animate-slide-in-left' : 'opacity-0 translate-x-8'
-          }`}>
+          <div
+            className={`space-y-8 transition-all duration-1000 delay-400 ${
+              isVisible ? "animate-slide-in-left" : "opacity-0 translate-x-8"
+            }`}
+          >
             <div>
-              <h3 className="text-3xl font-bold text-foreground mb-6">Get In Touch</h3>
+              <h3 className="text-3xl font-bold text-foreground mb-6">
+                Get In Touch
+              </h3>
               <p className="text-lg text-muted-foreground leading-relaxed mb-8">
-                I'm always excited to discuss new opportunities, innovative projects, 
-                or just chat about technology. Feel free to reach out through any of the channels below.
+                I'm always excited to discuss new opportunities, innovative
+                projects, or just chat about technology. Feel free to reach out
+                through any of the channels below.
               </p>
             </div>
 
             {/* Contact Cards */}
             <div className="space-y-4">
               {contactInfo.map((info, index) => (
-                <Card 
+                <Card
                   key={info.title}
                   className="glassmorphism border-primary/20 hover:border-primary/40 transition-all duration-300 hover:scale-105 group cursor-pointer"
-                  onClick={() => window.open(info.href, '_blank')}
+                  onClick={() => {
+                    if (info.href.startsWith("mailto:")) {
+                      window.location.href = info.href;
+                    } else {
+                      window.open(info.href, "_blank");
+                    }
+                  }}
                 >
                   <CardContent className="p-6">
                     <div className="flex items-center space-x-4">
-                      <div className={`p-3 rounded-lg bg-primary/10 ${info.color} group-hover:scale-110 transition-transform duration-300`}>
+                      <div
+                        className={`p-3 rounded-lg bg-primary/10 ${info.color} group-hover:scale-110 transition-transform duration-300`}
+                      >
                         {info.icon}
                       </div>
                       <div>
-                        <h4 className="font-semibold text-foreground">{info.title}</h4>
+                        <h4 className="font-semibold text-foreground">
+                          {info.title}
+                        </h4>
                         <p className="text-muted-foreground">{info.value}</p>
                       </div>
                       <ExternalLink className="h-4 w-4 text-muted-foreground group-hover:text-primary transition-colors duration-300 ml-auto" />
@@ -145,7 +178,9 @@ export const Contact = () => {
 
             {/* Social Links */}
             <div>
-              <h4 className="text-xl font-bold text-foreground mb-4">Follow Me</h4>
+              <h4 className="text-xl font-bold text-foreground mb-4">
+                Follow Me
+              </h4>
               <div className="flex space-x-4">
                 {socialLinks.map((social) => (
                   <Button
@@ -155,7 +190,11 @@ export const Contact = () => {
                     asChild
                     className={`rounded-full border-primary/20 hover:border-primary hover:bg-primary/10 hover:scale-110 transition-all duration-300 ${social.color}`}
                   >
-                    <a href={social.href} target="_blank" rel="noopener noreferrer">
+                    <a
+                      href={social.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
                       {social.icon}
                       <span className="ml-2">{social.title}</span>
                     </a>

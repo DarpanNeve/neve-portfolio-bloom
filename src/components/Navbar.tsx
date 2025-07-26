@@ -1,8 +1,7 @@
-
-import { useState, useEffect } from 'react';
-import { Menu, X, Github, Linkedin, Mail, ExternalLink } from 'lucide-react';
-import { ThemeToggle } from './ThemeToggle';
-import { Button } from './ui/button';
+import { useState, useEffect } from "react";
+import { Menu, X, Github, Linkedin, Mail, ExternalLink } from "lucide-react";
+import { ThemeToggle } from "./ThemeToggle";
+import { Button } from "./ui/button";
 
 export const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -12,33 +11,42 @@ export const Navbar = () => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
     };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const navItems = [
-    { name: 'Home', href: '#home' },
-    { name: 'About', href: '#about' },
-    { name: 'Projects', href: '#projects' },
-    { name: 'Skills', href: '#skills' },
-    { name: 'Contact', href: '#contact' },
+    { name: "Home", href: "#home" },
+    { name: "About", href: "#about" },
+    { name: "Projects", href: "#projects" },
+    { name: "Skills", href: "#skills" },
+    { name: "Contact", href: "#contact" },
   ];
 
   const socialLinks = [
-    { icon: Github, href: 'https://github.com/DarpanNeve', label: 'GitHub' },
-    { icon: Linkedin, href: 'https://www.linkedin.com/in/darpanneve/', label: 'LinkedIn' },
-    { icon: Mail, href: 'mailto:darpanneve3@gmail.com', label: 'Email' },
+    { icon: Github, href: "https://github.com/DarpanNeve", label: "GitHub" },
+    {
+      icon: Linkedin,
+      href: "https://www.linkedin.com/in/darpanneve/",
+      label: "LinkedIn",
+    },
+    { icon: Mail, href: "mailto:darpanneve3@gmail.com", label: "Email" },
   ];
 
   return (
-    <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-      scrolled ? 'glassmorphism backdrop-blur-md py-2' : 'bg-transparent py-4'
-    }`}>
+    <nav
+      className={`fixed top-0 w-full z-50 transition-all duration-300 ${
+        scrolled ? "glassmorphism backdrop-blur-md py-2" : "bg-transparent py-4"
+      }`}
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
           {/* Logo */}
           <div className="flex items-center">
-            <a href="#home" className="text-2xl font-bold text-gradient  hover:scale-110 transition-transform duration-300">
+            <a
+              href="#home"
+              className="text-2xl font-bold text-gradient  hover:scale-110 transition-transform duration-300"
+            >
               DN
             </a>
           </div>
@@ -52,7 +60,9 @@ export const Navbar = () => {
                   href={item.href}
                   className="relative text-foreground hover:text-primary transition-colors duration-300 font-medium group"
                   onClick={() => {
-                    document.querySelector(item.href)?.scrollIntoView({ behavior: 'smooth' });
+                    document
+                      .querySelector(item.href)
+                      ?.scrollIntoView({ behavior: "smooth" });
                   }}
                 >
                   {item.name}
@@ -72,7 +82,12 @@ export const Navbar = () => {
                 asChild
                 className="h-10 w-10 rounded-full hover:bg-primary/10 hover:scale-110 transition-all duration-300"
               >
-                <a href={href} target="_blank" rel="noopener noreferrer" aria-label={label}>
+                <a
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={label}
+                >
                   <Icon className="h-4 w-4" />
                 </a>
               </Button>
@@ -89,7 +104,11 @@ export const Navbar = () => {
               onClick={() => setIsOpen(!isOpen)}
               className="h-10 w-10 rounded-full"
             >
-              {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+              {isOpen ? (
+                <X className="h-5 w-5" />
+              ) : (
+                <Menu className="h-5 w-5" />
+              )}
             </Button>
           </div>
         </div>
@@ -105,7 +124,9 @@ export const Navbar = () => {
                   className="text-foreground hover:text-primary transition-colors duration-300 font-medium px-3 py-2 rounded-md hover:bg-primary/10"
                   onClick={() => {
                     setIsOpen(false);
-                    document.querySelector(item.href)?.scrollIntoView({ behavior: 'smooth' });
+                    document
+                      .querySelector(item.href)
+                      ?.scrollIntoView({ behavior: "smooth" });
                   }}
                 >
                   {item.name}
@@ -120,7 +141,12 @@ export const Navbar = () => {
                     asChild
                     className="h-10 w-10 rounded-full hover:bg-primary/10"
                   >
-                    <a href={href} target="_blank" rel="noopener noreferrer" aria-label={label}>
+                    <a
+                      href={href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={label}
+                    >
                       <Icon className="h-4 w-4" />
                       <ExternalLink className="h-3 w-3 ml-1" />
                     </a>
