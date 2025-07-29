@@ -34,7 +34,7 @@ export const About = () => {
     if (isVisible) {
       const targets = {
         projects: 7,
-        experience: 3,
+        experience: 1,
         problems: 600,
         achievements: 5,
       };
