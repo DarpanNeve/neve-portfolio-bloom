@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://darpan.neveconsultancy.in/sitemap.xml
+Sitemap: https://darpanneve.com/sitemap.xml
