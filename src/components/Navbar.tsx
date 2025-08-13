@@ -103,11 +103,12 @@ export const Navbar = () => {
               size="sm"
               onClick={() => setIsOpen(!isOpen)}
               className="h-10 w-10 rounded-full"
+              aria-label={isOpen ? "Close menu" : "Open menu"} // <-- Accessible name
             >
               {isOpen ? (
-                <X className="h-5 w-5" />
+                <X className="h-5 w-5" aria-hidden="true" />
               ) : (
-                <Menu className="h-5 w-5" />
+                <Menu className="h-5 w-5" aria-hidden="true" />
               )}
             </Button>
           </div>
