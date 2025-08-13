@@ -71,7 +71,7 @@ export const Hero = () => {
           </div>
 
           {/* Description */}
-          <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto mb-12 leading-relaxed animate-slide-in-right">
+          <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto mb-12 leading-relaxed">
             I craft exceptional digital experiences with modern technologies,
             specializing in scalable mobile solutions and innovative web
             applications.
