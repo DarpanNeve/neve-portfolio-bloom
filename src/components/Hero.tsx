@@ -8,19 +8,19 @@ export const Hero = () => {
   const [typedText, setTypedText] = useState("");
   const fullText = "Full-Stack Software Engineer";
 
-  useEffect(() => {
-    let index = 0;
-    const timer = setInterval(() => {
-      if (index < fullText.length) {
-        setTypedText(fullText.slice(0, index + 1));
-        index++;
-      } else {
-        clearInterval(timer);
-      }
-    }, 100);
+  // useEffect(() => {
+  //   let index = 0;
+  //   const timer = setInterval(() => {
+  //     if (index < fullText.length) {
+  //       setTypedText(fullText.slice(0, index + 1));
+  //       index++;
+  //     } else {
+  //       clearInterval(timer);
+  //     }
+  //   }, 100);
 
-    return () => clearInterval(timer);
-  }, []);
+  //   return () => clearInterval(timer);
+  // }, []);
 
   return (
     <section
@@ -66,7 +66,7 @@ export const Hero = () => {
               className="text-2xl md:text-4xl font-semibold text-muted-foreground font-mono"
               aria-hidden="true"
             >
-              <span className="typing-cursor">{typedText}</span>
+              <span className="typing-cursor">{fullText}</span>
             </h2>
           </div>
 
