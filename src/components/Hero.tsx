@@ -1,7 +1,9 @@
+// src/components/Hero.tsx
 import { useState, useEffect } from "react";
 import { ChevronDown, Download, ExternalLink } from "lucide-react";
 import { Button } from "./ui/button";
 import { Link } from "react-router-dom";
+
 export const Hero = () => {
   const [typedText, setTypedText] = useState("");
   const fullText = "Full-Stack Software Engineer";
@@ -23,10 +25,11 @@ export const Hero = () => {
   return (
     <section
       id="home"
+      role="banner"
       className="min-h-screen flex items-center justify-center relative overflow-hidden"
     >
       {/* Animated background particles */}
-      <div className="particles">
+      <div className="particles" aria-hidden="true">
         {[...Array(6)].map((_, i) => (
           <div
             key={i}
@@ -48,16 +51,21 @@ export const Hero = () => {
             Hi there! 👋 I'm
           </p>
 
-          {/* Name */}
+          {/* Name + SEO-friendly H1 (includes role in an sr-only span) */}
           <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold mb-6 animate-scale-in">
             <span className="text-gradient animate-gradient-x bg-gradient-to-r from-primary via-cyan-400 to-purple-400">
               Darpan Neve
             </span>
+            {/* Include role in H1 for SEO, but visually hide it (sr-only is Tailwind util) */}
+            <span className="sr-only"> — Full-Stack Software Engineer</span>
           </h1>
 
-          {/* Typing animation for role */}
+          {/* Typing animation for role (visual only; aria-hidden so screen readers use the sr-only text above) */}
           <div className="h-16 md:h-20 flex items-center justify-center mb-8">
-            <h2 className="text-2xl md:text-4xl font-semibold text-muted-foreground font-mono">
+            <h2
+              className="text-2xl md:text-4xl font-semibold text-muted-foreground font-mono"
+              aria-hidden="true"
+            >
               <span className="typing-cursor">{typedText}</span>
             </h2>
           </div>

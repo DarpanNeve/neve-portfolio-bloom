@@ -1,4 +1,10 @@
+# Allow all crawling of public resources
 User-agent: *
 Allow: /
 
+# Block any private paths if you have them (example)
+# Disallow: /admin
+# Disallow: /private
+
 Sitemap: https://darpanneve.com/sitemap.xml
+Host: darpanneve.com
