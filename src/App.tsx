@@ -19,7 +19,7 @@ const App: React.FC = () => {
       <TooltipProvider>
         <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
           <SEO
-            title="Darpan Neve — Freelance Full-Stack Developer"
+            title="Darpan Neve — Full-Stack Developer"
             description="Portfolio of Darpan Neve — React, Node.js & Python developer. Hire for web & mobile apps."
             image="https://darpanneve.com/og-image.png"
             url="https://darpanneve.com/"
