@@ -1,26 +1,26 @@
-// src/components/Hero.tsx
+'use client';
 import { useState, useEffect } from "react";
 import { ChevronDown, Download, ExternalLink } from "lucide-react";
 import { Button } from "./ui/button";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 
 export const Hero = () => {
   const [typedText, setTypedText] = useState("");
   const fullText = "Full-Stack Software Engineer";
 
-  // useEffect(() => {
-  //   let index = 0;
-  //   const timer = setInterval(() => {
-  //     if (index < fullText.length) {
-  //       setTypedText(fullText.slice(0, index + 1));
-  //       index++;
-  //     } else {
-  //       clearInterval(timer);
-  //     }
-  //   }, 100);
+  useEffect(() => {
+    let index = 0;
+    const timer = setInterval(() => {
+      if (index < fullText.length) {
+        setTypedText(fullText.slice(0, index + 1));
+        index++;
+      } else {
+        clearInterval(timer);
+      }
+    }, 100);
 
-  //   return () => clearInterval(timer);
-  // }, []);
+    return () => clearInterval(timer);
+  }, []);
 
   return (
     <section
@@ -66,7 +66,7 @@ export const Hero = () => {
               className="text-2xl md:text-4xl font-semibold text-muted-foreground font-mono"
               aria-hidden="true"
             >
-              <span className="typing-cursor">{fullText}</span>
+              <span className="typing-cursor">{typedText}</span>
             </h2>
           </div>
 
@@ -79,7 +79,7 @@ export const Hero = () => {
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center animate-fade-in">
-            <a href="#projects">
+            <Link href="#projects">
               <Button
                 size="lg"
                 className="group relative overflow-hidden bg-gradient-to-r from-primary to-cyan-500 hover:from-cyan-500 hover:to-primary text-white font-semibold px-8 py-3 rounded-full glow-effect hover:scale-105 transition-all duration-300"
@@ -89,7 +89,7 @@ export const Hero = () => {
                   <ExternalLink className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform duration-300" />
                 </span>
               </Button>
-            </a>
+            </Link>
             <Button
               variant="outline"
               onClick={() => {

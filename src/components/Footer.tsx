@@ -1,3 +1,4 @@
+'use client';
 
 import { Heart, Code } from 'lucide-react';
 
