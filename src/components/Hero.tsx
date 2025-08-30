@@ -1,27 +1,9 @@
-'use client';
-import { useState, useEffect } from "react";
 import { ChevronDown, Download, ExternalLink } from "lucide-react";
 import { Button } from "./ui/button";
 import Link from "next/link";
 
 export const Hero = () => {
-  const [typedText, setTypedText] = useState("");
-  const fullText = "Full-Stack Software Engineer";
-
-  useEffect(() => {
-    let index = 0;
-    const timer = setInterval(() => {
-      if (index < fullText.length) {
-        setTypedText(fullText.slice(0, index + 1));
-        index++;
-      } else {
-        clearInterval(timer);
-      }
-    }, 100);
-
-    return () => clearInterval(timer);
-  }, []);
-
+  const typedText = "Full-Stack Software Engineer";
   return (
     <section
       id="home"
@@ -90,19 +72,20 @@ export const Hero = () => {
                 </span>
               </Button>
             </Link>
-            <Button
-              variant="outline"
-              onClick={() => {
-                window.open(
-                  "https://drive.google.com/drive/folders/1zRIBlmmWRzW40bx947SKtCjhRIjcWKY7?usp=sharing"
-                );
-              }}
-              size="lg"
-              className="group border-2 border-primary/50 hover:border-primary hover:bg-primary/10 font-semibold px-8 py-3 rounded-full hover:scale-105 transition-all duration-300"
+            <a
+              href="https://drive.google.com/drive/folders/1zRIBlmmWRzW40bx947SKtCjhRIjcWKY7?usp=sharing"
+              target="_blank"
+              rel="noopener noreferrer"
             >
-              <Download className="mr-2 h-4 w-4 group-hover:animate-bounce" />
-              Download Resume
-            </Button>
+              <Button
+                variant="outline"
+                size="lg"
+                className="group border-2 border-primary/50 hover:border-primary hover:bg-primary/10 font-semibold px-8 py-3 rounded-full hover:scale-105 transition-all duration-300"
+              >
+                <Download className="mr-2 h-4 w-4 group-hover:animate-bounce" />
+                Download Resume
+              </Button>
+            </a>
           </div>
 
           {/* Scroll indicator */}

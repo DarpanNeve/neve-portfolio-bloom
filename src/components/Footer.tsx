@@ -1,6 +1,6 @@
-'use client';
+"use client";
 
-import { Heart, Code } from 'lucide-react';
+import { Heart, Code } from "lucide-react";
 
 export const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -14,18 +14,9 @@ export const Footer = () => {
             <span>© {currentYear} Darpan Neve. All rights reserved.</span>
           </div>
 
-          {/* Made with love */}
-          <div className="flex items-center space-x-2 text-muted-foreground">
-            <span>Made with</span>
-            <Heart className="h-4 w-4 text-red-500 animate-pulse" />
-            <span>and</span>
-            <Code className="h-4 w-4 text-primary" />
-            <span>by Darpan</span>
-          </div>
-
           {/* Back to top */}
           <button
-            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
             className="text-primary hover:text-primary/80 transition-colors duration-300 font-medium hover:scale-110 transform transition-transform"
           >
             Back to Top ↑
