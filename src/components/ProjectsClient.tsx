@@ -1,11 +1,6 @@
 "use client";
 import { useState, useEffect, useRef } from "react";
-import {
-  ExternalLink,
-  Github,
-  X,
-  ChevronRight,
-} from "lucide-react";
+import { ExternalLink, Github, X, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -67,7 +62,7 @@ export const ProjectsClient = ({ children }: { children: React.ReactNode }) => {
     <>
       <section
         id="projects"
-        className="py-16 lg:py-24 bg-background"
+        className="py-4 lg:py-4 bg-background"
         ref={sectionRef}
       >
         <div
@@ -336,7 +331,9 @@ export const ProjectsClient = ({ children }: { children: React.ReactNode }) => {
                       <Button
                         variant="outline"
                         className="flex items-center justify-center gap-2 hover:scale-105 transition-all duration-300"
-                        onClick={() => handleLinkClick(selectedProject.codeLink)}
+                        onClick={() =>
+                          handleLinkClick(selectedProject.codeLink)
+                        }
                       >
                         <Github className="h-4 w-4" />
                         View Source Code
@@ -345,7 +342,9 @@ export const ProjectsClient = ({ children }: { children: React.ReactNode }) => {
                     {selectedProject.liveLink && (
                       <Button
                         className="flex items-center justify-center gap-2 hover:scale-105 transition-all duration-300 bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700"
-                        onClick={() => handleLinkClick(selectedProject.liveLink)}
+                        onClick={() =>
+                          handleLinkClick(selectedProject.liveLink)
+                        }
                       >
                         <ExternalLink className="h-4 w-4" />
                         Visit Website

@@ -68,7 +68,7 @@ export const AboutClient = ({ children }: { children: React.ReactNode }) => {
   ];
 
   return (
-    <section id="about" className="py-20 lg:py-32" ref={sectionRef}>
+    <section id="about" ref={sectionRef}>
       <div
         className={`transition-all duration-1000 ${
           isVisible ? "animate-fade-in" : "opacity-0 translate-y-8"
@@ -76,8 +76,8 @@ export const AboutClient = ({ children }: { children: React.ReactNode }) => {
       >
         {children}
       </div>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 ">
           {stats.map((stat, index) => (
             <Card
               key={stat.label}

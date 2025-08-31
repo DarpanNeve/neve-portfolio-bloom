@@ -1,4 +1,4 @@
-'use client';
+"use client";
 import { useState, useEffect, useRef } from "react";
 import {
   Code,
@@ -71,7 +71,7 @@ export const Skills = () => {
   }, []);
 
   return (
-    <section id="skills" className="py-20 lg:py-32" ref={sectionRef}>
+    <section id="skills" className="py-2 lg:py-12" ref={sectionRef}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center mb-16">
