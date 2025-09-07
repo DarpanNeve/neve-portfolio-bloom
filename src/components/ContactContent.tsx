@@ -103,8 +103,7 @@ export const ContactContent = () => {
           </div>
         </div>
 
-        {/* Contact Form */}
-        {/* <ContactForm isVisible={isVisible} /> */}
+        
       </div>
     </div>
   );

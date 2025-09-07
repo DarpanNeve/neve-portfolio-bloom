@@ -1,12 +1,5 @@
-import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
-import "../src/index.css";
-
-import { Providers } from "../src/components/Providers";
-import { Navbar } from "../src/components/Navbar";
-import { Footer } from "../src/components/Footer";
-
-const inter = Inter({ subsets: ["latin"] });
+import type { Metadata, Viewport } from "next";
 
 export const metadata: Metadata = {
   title: "Darpan Neve — Full-Stack Developer (Flutter · React · Node.js · Python)",
@@ -45,6 +38,14 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   themeColor: "#0ea5a2",
 };
+
+import "../src/index.css";
+
+import { Providers } from "../src/components/Providers";
+import { Navbar } from "../src/components/Navbar";
+import { Footer } from "../src/components/Footer";
+
+const inter = Inter({ subsets: ["latin"] });
 
 export default function RootLayout({
   children,
