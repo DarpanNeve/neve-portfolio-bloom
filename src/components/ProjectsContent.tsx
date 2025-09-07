@@ -1,11 +1,34 @@
-import {
-  Smartphone,
-  Globe,
-  Server,
-  Zap,
-} from "lucide-react";
+import { Smartphone, Globe, Server, Zap } from "lucide-react";
 
 export const projects = [
+  {
+    title: "LockBloom",
+    category: "Password Manager",
+    description:
+      "Your passwords secured and simplified. Offline-first AES-256-GCM encryption with biometric unlock.",
+    longDescription:
+      "LockBloom is a modern, offline-first password manager built with a security-first approach. It uses AES-256-GCM encryption and secure hardware key storage (Android Keystore and iOS Keychain). Features include biometric authentication, auto-lock, cryptographically secure password generation, advanced search and tagging, encrypted backup/import, and a privacy-first, open-source security model.",
+    technologies: [
+      "Flutter",
+      "Dart",
+      "AES-256-GCM",
+      "Android Keystore",
+      "iOS Keychain",
+      "Material Design 3",
+    ],
+    icon: <Server className="h-6 w-6" />,
+    metrics: [
+      "Offline-first",
+      "AES-256-GCM",
+      "Biometric Unlock",
+      "Encrypted Backup",
+    ],
+    image:
+      "https://plus.unsplash.com/premium_photo-1681487746049-c39357159f69?w=600&h=400&fit=crop",
+    codeLink: null,
+    liveLink: "https://play.google.com/store/apps/details?id=com.dn.lockbloom",
+    color: "from-slate-800 to-indigo-600",
+  },
   {
     title: "Soil Master",
     category: "IoT Application",
@@ -139,8 +162,7 @@ export const ProjectsContent = () => {
         <p
           className={`text-lg lg:text-xl text-muted-foreground max-w-3xl mx-auto`}
         >
-          Showcasing innovative solutions across web, mobile, and AI
-          platforms
+          Showcasing innovative solutions across web, mobile, and AI platforms
         </p>
       </div>
     </div>
