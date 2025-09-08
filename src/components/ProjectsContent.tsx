@@ -1,27 +1,35 @@
-import { Smartphone, Globe, Server, Zap } from "lucide-react";
+import {
+  Smartphone,
+  Globe,
+  Server,
+  Zap,
+  BarChart3,
+  TrendingUp,
+} from "lucide-react";
 
 export const projects = [
   {
     title: "LockBloom",
-    category: "Password Manager",
+    category: "Security Application",
     description:
-      "Your passwords secured and simplified. Offline-first AES-256-GCM encryption with biometric unlock.",
+      "Production-ready password manager with enterprise-grade security architecture and biometric authentication.",
     longDescription:
-      "LockBloom is a modern, offline-first password manager built with a security-first approach. It uses AES-256-GCM encryption and secure hardware key storage (Android Keystore and iOS Keychain). Features include biometric authentication, auto-lock, cryptographically secure password generation, advanced search and tagging, encrypted backup/import, and a privacy-first, open-source security model.",
+      "LockBloom demonstrates advanced mobile security implementation using industry-standard AES-256-GCM encryption with hardware-backed key storage. Built with Flutter following clean architecture principles, it features secure biometric authentication, encrypted local storage, and zero-knowledge security model. The codebase emphasizes security-first development with comprehensive unit testing and follows OWASP mobile security guidelines.",
     technologies: [
       "Flutter",
       "Dart",
       "AES-256-GCM",
       "Android Keystore",
       "iOS Keychain",
-      "Material Design 3",
+      "Clean Architecture",
+      "MVC Pattern",
     ],
     icon: <Server className="h-6 w-6" />,
     metrics: [
-      "Offline-first",
-      "AES-256-GCM",
-      "Biometric Unlock",
-      "Encrypted Backup",
+      "Production Ready",
+      "Enterprise Security",
+      "Clean Architecture",
+      "OWASP Compliant",
     ],
     image:
       "https://plus.unsplash.com/premium_photo-1681487746049-c39357159f69?w=600&h=400&fit=crop",
@@ -30,15 +38,58 @@ export const projects = [
     color: "from-slate-800 to-indigo-600",
   },
   {
+    title: "Assesme",
+    category: "SaaS Analytics Platform",
+    description:
+      "Full-stack business intelligence platform with advanced data processing and modern microservices architecture.",
+    longDescription:
+      "Assesme showcases enterprise-level full-stack development using React with TypeScript, FastAPI with async/await patterns, and MongoDB with optimized aggregation pipelines. Features include real-time data visualization with D3.js, RESTful API design with OpenAPI documentation, Redis caching layer, and SerpAPI integration for external data enrichment. Built using Domain-Driven Design principles with comprehensive test coverage and CI/CD pipeline.",
+    technologies: [
+      "React",
+      "TypeScript",
+      "FastAPI",
+      "MongoDB",
+      "SerpAPI",
+      "Redis",
+      "Docker",
+      "Microservices",
+      "D3.js",
+    ],
+    icon: <BarChart3 className="h-6 w-6" />,
+    metrics: [
+      "Microservices Architecture",
+      "Real-time Analytics",
+      "API-First Design",
+      "Production Deployment",
+    ],
+    image:
+      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop",
+    codeLink: null,
+    liveLink: "https://assesme.com",
+    color: "from-emerald-600 to-blue-700",
+  },
+  {
     title: "Soil Master",
     category: "IoT Application",
     description:
-      "Advanced IoT solution for soil monitoring with 100+ beta testers and 30% faster sync capabilities.",
+      "Advanced IoT monitoring solution with AWS integration and real-time data processing capabilities.",
     longDescription:
-      "A comprehensive Flutter application integrated with AWS IoT for real-time soil monitoring. Features include sensor data visualization, automated alerts, and predictive analytics for optimal farming conditions.",
-    technologies: ["Flutter", "AWS IoT", "Dart", "Firebase", "Node.js"],
+      "Professional Flutter application demonstrating IoT integration with AWS IoT Core, featuring real-time sensor data visualization, MQTT protocol implementation, and responsive material design. Includes comprehensive state management with BLoC pattern, local data persistence, and background sync capabilities. The architecture supports scalable device management and secure IoT communication.",
+    technologies: [
+      "Flutter",
+      "AWS IoT Core",
+      "MQTT",
+      "BLoC Pattern",
+      "Material Design",
+      "SQLite",
+    ],
     icon: <Zap className="h-6 w-6" />,
-    metrics: ["100+ Users", "30% Faster Sync", "Real-time Monitoring"],
+    metrics: [
+      "IoT Integration",
+      "Real-time Processing",
+      "AWS Cloud",
+      "Scalable Architecture",
+    ],
     image:
       "https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=600&h=400&fit=crop",
     codeLink: null,
@@ -48,14 +99,26 @@ export const projects = [
   },
   {
     title: "Zarity Chronic Care",
-    category: "Healthcare App",
+    category: "Healthcare Application",
     description:
-      "HIPAA-compliant telemedicine platform with video consultations using Agora RTC.",
+      "HIPAA-compliant telemedicine platform with secure video calling and comprehensive patient management.",
     longDescription:
-      "Comprehensive healthcare application built with Flutter and Django. Features secure video consultations, patient management, prescription handling, and appointment scheduling with full HIPAA compliance.",
-    technologies: ["Flutter", "GetX", "Django", "Agora RTC", "Healthcare"],
+      "Professional healthcare application built with Flutter and Django REST framework, featuring secure video consultations via Agora RTC SDK, encrypted patient data handling, and role-based access control. Implements healthcare compliance standards, secure authentication with JWT, and comprehensive audit logging. The backend follows Django best practices with proper serialization and validation.",
+    technologies: [
+      "Flutter",
+      "Django REST",
+      "Agora RTC",
+      "JWT Auth",
+      "PostgreSQL",
+      "HIPAA Compliance",
+    ],
     icon: <Smartphone className="h-6 w-6" />,
-    metrics: ["HIPAA Compliant", "Video Consultations", "Patient Management"],
+    metrics: [
+      "HIPAA Compliant",
+      "Secure Video Calls",
+      "Production Ready",
+      "Healthcare Standards",
+    ],
     image:
       "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=600&h=400&fit=crop",
     codeLink: null,
@@ -65,14 +128,26 @@ export const projects = [
   },
   {
     title: "Vastav Intellect",
-    category: "Business Consulting",
+    category: "Business Consulting Platform",
     description:
-      "Developed and maintained the full-stack website for Vastav Intellect, a government-recognized IP and business consulting firm.",
+      "Professional consulting website with modern full-stack architecture and optimized user experience.",
     longDescription:
-      "Led the end-to-end development of Vastav Intellect, a recognized IP and business consulting platform under the Ministry of Commerce, India. Implemented full-stack architecture, showcasing services including patents, trademarks, ISO certification, compliance, and startup incubation. Optimized UI/UX for credibility and conversions. Platform supports 1,000+ clients and 1,800+ patent filings.",
-    technologies: ["React", "Node.js", "MongoDB", "AWS", "Hostinger", "VPS"],
+      "Comprehensive business consulting platform built with React and Node.js, featuring modern component architecture, responsive design, and SEO optimization. Implements professional UI/UX design principles, efficient state management, and performance optimization techniques. The backend includes proper API design, database optimization, and security best practices for business applications.",
+    technologies: [
+      "React",
+      "Node.js",
+      "MongoDB",
+      "Express.js",
+      "Modern CSS",
+      "SEO Optimization",
+    ],
     icon: <Globe className="h-6 w-6" />,
-    metrics: ["Patents", "Trademarks", "Startup Services"],
+    metrics: [
+      "Professional Design",
+      "SEO Optimized",
+      "Responsive UI",
+      "Performance Tuned",
+    ],
     image:
       "https://plus.unsplash.com/premium_photo-1661292120292-2687c53fccc7?fm=jpg&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDM2fHx8ZW58MHx8fHx8&ixlib=rb-4.0.3&q=60&w=3000",
     codeLink: null,
@@ -81,17 +156,24 @@ export const projects = [
   },
   {
     title: "Jaldindi Pratishthan",
-    category: "Mobile Application",
+    category: "NGO Management App",
     description:
-      "NGO operations app with 100+ users and real-time location tracking across 22 regions.",
+      "Cross-platform mobile application with real-time location tracking and cloud synchronization.",
     longDescription:
-      "Cross-platform mobile app built for NGO field operations, enabling volunteer coordination, document uploads, and real-time geolocation via Google Maps. Cloud backend ensures reliable performance and centralized data management.",
-    technologies: ["Flutter", "Firebase", "Google Maps API", "Dart"],
+      "Flutter application demonstrating professional mobile development with Google Maps integration, real-time geolocation services, and Firebase backend. Features include offline-first architecture, background sync, push notifications, and comprehensive state management. Built with scalable architecture supporting multiple user roles and real-time data updates.",
+    technologies: [
+      "Flutter",
+      "Firebase",
+      "Google Maps API",
+      "Cloud Functions",
+      "Push Notifications",
+    ],
     icon: <Smartphone className="h-6 w-6" />,
     metrics: [
-      "100+ User Sign-ups in First Month",
-      "22+ Location Coverage",
-      "Realtime Cloud Sync",
+      "Real-time Sync",
+      "Location Services",
+      "Offline Support",
+      "Cloud Backend",
     ],
     image:
       "https://images.unsplash.com/photo-1721239571860-4f73b7e35551?w=600&h=400&fit=crop",
@@ -101,14 +183,26 @@ export const projects = [
   },
   {
     title: "HireSphere",
-    category: "AI Platform",
+    category: "AI-Powered Platform",
     description:
-      "AI-powered interview automation with facial recognition and posture detection capabilities.",
+      "Modern recruitment platform integrating computer vision and machine learning technologies.",
     longDescription:
-      "Cutting-edge recruitment platform leveraging TensorFlow.js for real-time candidate assessment. Features automated interview scheduling, AI-driven evaluation, and comprehensive analytics dashboard.",
-    technologies: ["React", "FastAPI", "MongoDB", "TensorFlow.js", "AI/ML"],
-    icon: <Zap className="h-6 w-6" />,
-    metrics: ["AI-powered", "Facial Recognition", "Automated Interviews"],
+      "Innovative recruitment platform showcasing AI/ML integration with React frontend and FastAPI backend. Features real-time facial recognition using TensorFlow.js, automated interview assessment, and comprehensive analytics dashboard. Demonstrates advanced JavaScript ML implementation, modern Python async patterns, and professional UI/UX design for complex workflows.",
+    technologies: [
+      "React",
+      "FastAPI",
+      "TensorFlow.js",
+      "Computer Vision",
+      "MongoDB",
+      "ML/AI",
+    ],
+    icon: <TrendingUp className="h-6 w-6" />,
+    metrics: [
+      "AI Integration",
+      "Computer Vision",
+      "Modern Stack",
+      "Innovative Features",
+    ],
     image:
       "https://images.unsplash.com/photo-1553877522-43269d4ea984?w=600&h=400&fit=crop",
     codeLink: "https://github.com/DarpanNeve/hiresphere",
@@ -117,31 +211,51 @@ export const projects = [
   },
   {
     title: "Signoware",
-    category: "Daemon App",
+    category: "Cross-Platform Automation",
     description:
-      "Cross-platform automation tool processing 500+ daily PDFs on Windows and Linux systems.",
+      "Enterprise document processing solution with advanced PDF handling and automation capabilities.",
     longDescription:
-      "Enterprise-grade document processing solution built with Java and Python. Automates PDF generation, digital signatures, and batch processing with advanced OCR capabilities.",
-    technologies: ["Java", "Python", "Flutter", "OCR", "Cross-platform"],
+      "Professional document automation platform built with Java and Python, demonstrating cross-platform development expertise. Features include advanced PDF processing, OCR integration, batch automation, and robust error handling. Built with enterprise-grade architecture, comprehensive logging, and scalable processing pipelines supporting high-volume document workflows.",
+    technologies: [
+      "Java",
+      "Python",
+      "PDF Processing",
+      "OCR",
+      "Cross-platform",
+      "Automation",
+    ],
     icon: <Server className="h-6 w-6" />,
-    metrics: ["500+ Daily PDFs", "Cross-platform", "Enterprise-grade"],
+    metrics: [
+      "Cross-Platform",
+      "PDF Automation",
+      "Enterprise Grade",
+      "High Performance",
+    ],
     image:
       "https://images.unsplash.com/photo-1586281380349-632531db7ed4?w=600&h=400&fit=crop",
     color: "from-blue-400 to-indigo-600",
   },
   {
     title: "Vendor Portal",
-    category: "Web Application",
+    category: "Business Web Application",
     description:
-      "Full-stack solution achieving 45% throughput gain and 60% reduction in manual work.",
+      "Full-stack vendor management solution with automated workflows and comprehensive analytics.",
     longDescription:
-      "Modern web application built with React and FastAPI, featuring vendor onboarding, contract management, and automated workflows. Includes real-time analytics and notification systems.",
-    technologies: ["React", "FastAPI", "PostgreSQL", "Python", "Docker"],
+      "Professional web application built with React and FastAPI, demonstrating modern full-stack development practices. Features include automated vendor onboarding workflows, real-time analytics dashboards, comprehensive reporting, and role-based access control. Implements clean code principles, proper API design, and scalable database architecture with PostgreSQL.",
+    technologies: [
+      "React",
+      "FastAPI",
+      "PostgreSQL",
+      "Workflow Automation",
+      "Analytics",
+      "Docker",
+    ],
     icon: <Globe className="h-6 w-6" />,
     metrics: [
-      "45% Throughput Gain",
-      "60% Less Manual Work",
-      "Real-time Analytics",
+      "Workflow Automation",
+      "Analytics Dashboard",
+      "Production Deployment",
+      "Modern Architecture",
     ],
     image:
       "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=400&fit=crop",
@@ -157,12 +271,13 @@ export const ProjectsContent = () => {
         <h2
           className={`text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 lg:mb-6 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent`}
         >
-          Featured Projects
+          Professional Development Portfolio
         </h2>
         <p
           className={`text-lg lg:text-xl text-muted-foreground max-w-3xl mx-auto`}
         >
-          Showcasing innovative solutions across web, mobile, and AI platforms
+          Showcasing enterprise-grade solutions with modern architecture
+          patterns and industry best practices
         </p>
       </div>
     </div>
