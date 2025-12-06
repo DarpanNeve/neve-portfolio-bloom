@@ -3,14 +3,12 @@
         {
             "source": "/routinepath",
             "destination": "https://routinepath.darpanneve.com",
-            "permanent": true,
-            "statusCode": 301
+            "permanent": true
         },
         {
             "source": "/routinepath/:path*",
             "destination": "https://routinepath.darpanneve.com/:path*",
-            "permanent": true,
-            "statusCode": 301
+            "permanent": true
         }
     ],
     "headers": [
