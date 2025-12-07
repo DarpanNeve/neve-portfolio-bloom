@@ -131,35 +131,6 @@ export const projects = [
     color: "from-green-400 to-emerald-600",
   },
   {
-    title: "Zarity Chronic Care",
-    category: "Healthcare Application",
-    description:
-      "HIPAA-compliant telemedicine platform with secure video calling and comprehensive patient management.",
-    longDescription:
-      "Professional healthcare application built with Flutter and Django REST framework, featuring secure video consultations via Agora RTC SDK, encrypted patient data handling, and role-based access control. Implements healthcare compliance standards, secure authentication with JWT, and comprehensive audit logging. The backend follows Django best practices with proper serialization and validation.",
-    technologies: [
-      "Flutter",
-      "Django REST",
-      "Agora RTC",
-      "JWT Auth",
-      "PostgreSQL",
-      "HIPAA Compliance",
-    ],
-    icon: <Smartphone className="h-6 w-6" />,
-    metrics: [
-      "HIPAA Compliant",
-      "Secure Video Calls",
-      "Production Ready",
-      "Healthcare Standards",
-    ],
-    image:
-      "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=600&h=400&fit=crop",
-    codeLink: null,
-    liveLink:
-      "https://play.google.com/store/apps/details?id=zarity.care.zarity_mobile",
-    color: "from-red-400 to-rose-600",
-  },
-  {
     title: "Vastav Intellect",
     category: "Business Consulting Platform",
     description:
@@ -241,58 +212,6 @@ export const projects = [
     codeLink: "https://github.com/DarpanNeve/hiresphere",
     liveLink: "https://hiresphere-pi.vercel.app/",
     color: "from-cyan-400 to-blue-600",
-  },
-  {
-    title: "Signoware",
-    category: "Cross-Platform Automation",
-    description:
-      "Enterprise document processing solution with advanced PDF handling and automation capabilities.",
-    longDescription:
-      "Professional document automation platform built with Java and Python, demonstrating cross-platform development expertise. Features include advanced PDF processing, OCR integration, batch automation, and robust error handling. Built with enterprise-grade architecture, comprehensive logging, and scalable processing pipelines supporting high-volume document workflows.",
-    technologies: [
-      "Java",
-      "Python",
-      "PDF Processing",
-      "OCR",
-      "Cross-platform",
-      "Automation",
-    ],
-    icon: <Server className="h-6 w-6" />,
-    metrics: [
-      "Cross-Platform",
-      "PDF Automation",
-      "Enterprise Grade",
-      "High Performance",
-    ],
-    image:
-      "https://images.unsplash.com/photo-1586281380349-632531db7ed4?w=600&h=400&fit=crop",
-    color: "from-blue-400 to-indigo-600",
-  },
-  {
-    title: "Vendor Portal",
-    category: "Business Web Application",
-    description:
-      "Full-stack vendor management solution with automated workflows and comprehensive analytics.",
-    longDescription:
-      "Professional web application built with React and FastAPI, demonstrating modern full-stack development practices. Features include automated vendor onboarding workflows, real-time analytics dashboards, comprehensive reporting, and role-based access control. Implements clean code principles, proper API design, and scalable database architecture with PostgreSQL.",
-    technologies: [
-      "React",
-      "FastAPI",
-      "PostgreSQL",
-      "Workflow Automation",
-      "Analytics",
-      "Docker",
-    ],
-    icon: <Globe className="h-6 w-6" />,
-    metrics: [
-      "Workflow Automation",
-      "Analytics Dashboard",
-      "Production Deployment",
-      "Modern Architecture",
-    ],
-    image:
-      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=400&fit=crop",
-    color: "from-purple-400 to-pink-600",
   },
 ];
 
