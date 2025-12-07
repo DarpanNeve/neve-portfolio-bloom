@@ -212,7 +212,6 @@ export const sharedMetadata: Metadata = {
         icon: [
             { url: '/favicon.ico', sizes: '32x32', type: 'image/x-icon' },
         ],
-        apple: [{ url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' }],
         shortcut: '/favicon.ico',
     },
     manifest: '/site.webmanifest',

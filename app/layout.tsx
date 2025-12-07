@@ -11,6 +11,7 @@ const inter = Inter({
   display: 'swap',
   variable: '--font-inter',
   preload: true,
+  weight: ['400', '600', '700', '900'],
   adjustFontFallback: true,
 });
 
