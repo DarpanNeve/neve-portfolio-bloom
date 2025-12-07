@@ -11,7 +11,6 @@ export function Providers({ children }: { children: React.ReactNode }) {
       attribute="class"
       defaultTheme="system"
       enableSystem
-      disableTransitionOnChange
       storageKey="portfolio-theme"
     >
       <TooltipProvider delayDuration={200} skipDelayDuration={0}>
