@@ -68,11 +68,10 @@ export const AboutClient = ({ children }: { children: React.ReactNode }) => {
   ];
 
   return (
-    <section id="about" ref={sectionRef}>
+    <section id="about" aria-label="About me" ref={sectionRef}>
       <div
-        className={`transition-all duration-1000 ${
-          isVisible ? "animate-fade-in" : "opacity-0 translate-y-8"
-        }`}
+        className={`transition-all duration-1000 ${isVisible ? "animate-fade-in" : "opacity-0 translate-y-8"
+          }`}
       >
         {children}
       </div>
@@ -81,9 +80,8 @@ export const AboutClient = ({ children }: { children: React.ReactNode }) => {
           {stats.map((stat, index) => (
             <Card
               key={stat.label}
-              className={`glassmorphism border-primary/20 hover:border-primary/40 transition-all duration-500 hover:scale-105 glow-effect ${
-                isVisible ? "animate-fade-in" : "opacity-0"
-              }`}
+              className={`glassmorphism border-primary/20 hover:border-primary/40 transition-all duration-500 hover:scale-105 glow-effect ${isVisible ? "animate-fade-in" : "opacity-0"
+                }`}
               style={{ animationDelay: `${index * 200}ms` }}
             >
               <CardContent className="p-6 text-center">

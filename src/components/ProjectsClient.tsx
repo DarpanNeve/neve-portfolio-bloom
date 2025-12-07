@@ -62,6 +62,7 @@ export const ProjectsClient = ({ children }: { children: React.ReactNode }) => {
     <>
       <section
         id="projects"
+        aria-label="My projects"
         className="py-4 lg:py-4 bg-background"
         ref={sectionRef}
       >

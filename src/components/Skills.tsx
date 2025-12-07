@@ -71,21 +71,19 @@ export const Skills = () => {
   }, []);
 
   return (
-    <section id="skills" className="py-2 lg:py-12" ref={sectionRef}>
+    <section id="skills" aria-label="Technical skills" className="py-2 lg:py-12" ref={sectionRef}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center mb-16">
           <h2
-            className={`text-4xl md:text-5xl font-bold mb-6 text-gradient transition-all duration-1000 ${
-              isVisible ? "animate-fade-in" : "opacity-0 translate-y-8"
-            }`}
+            className={`text-4xl md:text-5xl font-bold mb-6 text-gradient transition-all duration-1000 ${isVisible ? "animate-fade-in" : "opacity-0 translate-y-8"
+              }`}
           >
             Technical Skills
           </h2>
           <p
-            className={`text-xl text-muted-foreground max-w-3xl mx-auto transition-all duration-1000 delay-200 ${
-              isVisible ? "animate-fade-in" : "opacity-0 translate-y-8"
-            }`}
+            className={`text-xl text-muted-foreground max-w-3xl mx-auto transition-all duration-1000 delay-200 ${isVisible ? "animate-fade-in" : "opacity-0 translate-y-8"
+              }`}
           >
             My ever-growing toolkit for building modern, scalable, and
             performant applications.
@@ -97,9 +95,8 @@ export const Skills = () => {
           {Object.values(skillsData).map((category, index) => (
             <div
               key={category.title}
-              className={`glassmorphism border-primary/20 p-8 rounded-xl hover:border-primary/40 transition-all duration-500 hover:scale-105 glow-effect ${
-                isVisible ? "animate-fade-in" : "opacity-0"
-              }`}
+              className={`glassmorphism border-primary/20 p-8 rounded-xl hover:border-primary/40 transition-all duration-500 hover:scale-105 glow-effect ${isVisible ? "animate-fade-in" : "opacity-0"
+                }`}
               style={{ animationDelay: `${index * 150}ms` }}
             >
               <div className="flex justify-center mb-4">{category.icon}</div>

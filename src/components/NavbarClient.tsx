@@ -24,9 +24,9 @@ export const NavbarClient = ({ navItems, socialLinks }) => {
 
   return (
     <nav
-      className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-        scrolled ? "glassmorphism backdrop-blur-md py-2" : "bg-transparent py-4"
-      }`}
+      aria-label="Main navigation"
+      className={`fixed top-0 w-full z-50 transition-all duration-300 ${scrolled ? "glassmorphism backdrop-blur-md py-2" : "bg-transparent py-4"
+        }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
@@ -35,6 +35,7 @@ export const NavbarClient = ({ navItems, socialLinks }) => {
             <a
               href="#home"
               className="text-2xl font-bold text-gradient  hover:scale-110 transition-transform duration-300"
+              aria-label="Darpan Neve - Home"
             >
               DN
             </a>
@@ -95,7 +96,9 @@ export const NavbarClient = ({ navItems, socialLinks }) => {
               size="sm"
               onClick={() => setIsOpen(!isOpen)}
               className="h-10 w-10 rounded-full"
-              aria-label={isOpen ? "Close menu" : "Open menu"} // <-- Accessible name
+              aria-label={isOpen ? "Close menu" : "Open menu"}
+              aria-expanded={isOpen}
+              aria-controls="mobile-menu"
             >
               {isOpen ? (
                 <X className="h-5 w-5" aria-hidden="true" />
@@ -108,7 +111,7 @@ export const NavbarClient = ({ navItems, socialLinks }) => {
 
         {/* Mobile Navigation */}
         {isOpen && (
-          <div className="md:hidden mt-4 glassmorphism rounded-lg p-4 animate-fade-in">
+          <div id="mobile-menu" className="md:hidden mt-4 glassmorphism rounded-lg p-4 animate-fade-in">
             <div className="flex flex-col space-y-3">
               {navItems.map((item) => (
                 <a

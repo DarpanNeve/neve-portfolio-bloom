@@ -25,13 +25,13 @@ export const ContactClient = ({ children }: { children: React.ReactNode }) => {
   return (
     <section
       id="contact"
+      aria-label="Contact information"
       className="py-20 lg:py-32 bg-background/20"
       ref={sectionRef}
     >
       <div
-        className={`transition-all duration-1000 ${
-          isVisible ? "animate-fade-in" : "opacity-0 translate-y-8"
-        }`}
+        className={`transition-all duration-1000 ${isVisible ? "animate-fade-in" : "opacity-0 translate-y-8"
+          }`}
       >
         {children}
       </div>

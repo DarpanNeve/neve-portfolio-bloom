@@ -39,13 +39,10 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        <meta charSet="utf-8" />
+        <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="shortcut icon" href="/favicon.ico" />
         <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
         <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
-        <link rel="icon" href="/favicon.ico" sizes="any" />
-        <link rel="icon" href="/icon.svg" type="image/svg+xml" />
-        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-        <link rel="manifest" href="/site.webmanifest" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{

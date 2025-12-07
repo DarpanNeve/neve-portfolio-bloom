@@ -56,7 +56,7 @@ export const Hero = () => {
     document.addEventListener('visibilitychange', handleVisibilityChange, { passive: true });
 
     let lastTime = 0;
-    const throttle = 1000 / 60;
+    const throttle = 1000 / 30; // Reduced to 30fps for better performance
 
     const animate = (currentTime: number) => {
       if (!isVisible) {
@@ -69,25 +69,14 @@ export const Hero = () => {
 
         ripplesRef.current = ripplesRef.current.filter(ripple => {
           ripple.radius += ripple.speed;
-          ripple.opacity -= 0.002;
+          ripple.opacity -= 0.003; // Faster fade
 
           if (ripple.opacity > 0 && ripple.radius < ripple.maxRadius) {
+            // Draw only one ripple for performance
             ctx.beginPath();
             ctx.arc(ripple.x, ripple.y, ripple.radius, 0, Math.PI * 2);
             ctx.strokeStyle = `hsla(224, 76%, 48%, ${ripple.opacity})`;
-            ctx.lineWidth = 3;
-            ctx.stroke();
-
-            ctx.beginPath();
-            ctx.arc(ripple.x, ripple.y, ripple.radius * 0.8, 0, Math.PI * 2);
-            ctx.strokeStyle = `hsla(220, 70%, 60%, ${ripple.opacity * 0.6})`;
             ctx.lineWidth = 2;
-            ctx.stroke();
-
-            ctx.beginPath();
-            ctx.arc(ripple.x, ripple.y, ripple.radius * 0.6, 0, Math.PI * 2);
-            ctx.strokeStyle = `hsla(240, 65%, 65%, ${ripple.opacity * 0.3})`;
-            ctx.lineWidth = 1;
             ctx.stroke();
 
             return true;
@@ -112,9 +101,9 @@ export const Hero = () => {
         x: centerX,
         y: centerY,
         radius: 0,
-        maxRadius: maxDimension * 1.5,
-        opacity: 0.6,
-        speed: 5,
+        maxRadius: maxDimension * 1.2, // Smaller radius
+        opacity: 0.4, // Lower opacity
+        speed: 6, // Slightly faster
       });
     }, 300);
 
