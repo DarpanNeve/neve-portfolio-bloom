@@ -1,75 +1,166 @@
-import { ChevronDown, Download, ExternalLink } from "lucide-react";
+'use client';
+import { ChevronDown, Send, Briefcase, Download } from "lucide-react";
 import { Button } from "./ui/button";
 import Link from "next/link";
+import { useEffect, useState, useRef } from "react";
+
+interface Ripple {
+  x: number;
+  y: number;
+  radius: number;
+  maxRadius: number;
+  opacity: number;
+  speed: number;
+}
 
 export const Hero = () => {
-  const typedText = "Full-Stack Software Engineer";
+  const [isLoaded, setIsLoaded] = useState(false);
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+  const ripplesRef = useRef<Ripple[]>([]);
+  const animationFrameRef = useRef<number>();
+
+  useEffect(() => {
+    setIsLoaded(true);
+
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+
+    // Set canvas size
+    const resizeCanvas = () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    };
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas);
+
+    // Animation loop
+    const animate = () => {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      // Update and draw ripples
+      ripplesRef.current = ripplesRef.current.filter(ripple => {
+        ripple.radius += ripple.speed;
+        ripple.opacity -= 0.002;
+
+        if (ripple.opacity > 0 && ripple.radius < ripple.maxRadius) {
+          // Outer ripple
+          ctx.beginPath();
+          ctx.arc(ripple.x, ripple.y, ripple.radius, 0, Math.PI * 2);
+          ctx.strokeStyle = `hsla(224, 76%, 48%, ${ripple.opacity})`;
+          ctx.lineWidth = 3;
+          ctx.stroke();
+
+          // Middle ripple
+          ctx.beginPath();
+          ctx.arc(ripple.x, ripple.y, ripple.radius * 0.8, 0, Math.PI * 2);
+          ctx.strokeStyle = `hsla(220, 70%, 60%, ${ripple.opacity * 0.6})`;
+          ctx.lineWidth = 2;
+          ctx.stroke();
+
+          // Inner ripple
+          ctx.beginPath();
+          ctx.arc(ripple.x, ripple.y, ripple.radius * 0.6, 0, Math.PI * 2);
+          ctx.strokeStyle = `hsla(240, 65%, 65%, ${ripple.opacity * 0.3})`;
+          ctx.lineWidth = 1;
+          ctx.stroke();
+
+          return true;
+        }
+        return false;
+      });
+
+      animationFrameRef.current = requestAnimationFrame(animate);
+    };
+
+    animate();
+
+    // Initial center ripple on page load
+    const centerX = window.innerWidth / 2;
+    const centerY = window.innerHeight / 2;
+    const maxDimension = Math.max(window.innerWidth, window.innerHeight);
+
+    setTimeout(() => {
+      ripplesRef.current.push({
+        x: centerX,
+        y: centerY,
+        radius: 0,
+        maxRadius: maxDimension * 1.5,
+        opacity: 0.6,
+        speed: 5,
+      });
+    }, 300);
+
+    return () => {
+      window.removeEventListener('resize', resizeCanvas);
+      if (animationFrameRef.current) {
+        cancelAnimationFrame(animationFrameRef.current);
+      }
+    };
+  }, []);
+
   return (
     <section
       id="home"
       role="banner"
       className="min-h-screen flex items-center justify-center relative overflow-hidden"
     >
-      {/* Animated background particles */}
-      <div className="particles" aria-hidden="true">
-        {[...Array(6)].map((_, i) => (
-          <div
-            key={i}
-            className="particle"
-            style={{
-              width: Math.random() * 4 + 2 + "px",
-              height: Math.random() * 4 + 2 + "px",
-              top: Math.random() * 100 + "%",
-              animationDuration: Math.random() * 3 + 3 + "s",
-            }}
-          />
-        ))}
-      </div>
+      {/* Clean background */}
+      <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-transparent to-background pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <div className="animate-fade-in">
-          {/* Greeting */}
-          <p className="text-lg md:text-xl text-primary mb-4 font-mono animate-slide-in-left">
-            Hi there! 👋 I'm
+      {/* Initial ripple canvas */}
+      <canvas
+        ref={canvasRef}
+        className="absolute inset-0 pointer-events-none"
+        style={{ opacity: 0.5 }}
+      />
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10 py-20">
+        <div className={`transition-all duration-1000 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+          <p className="text-base md:text-lg text-muted-foreground mb-4 font-mono tracking-wide">
+            Full-Stack Software Engineer
           </p>
 
-          {/* Name + SEO-friendly H1 (includes role in an sr-only span) */}
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold mb-6 animate-scale-in">
-            <span className="text-gradient animate-gradient-x bg-gradient-to-r from-primary via-cyan-400 to-purple-400">
+          <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold mb-6 tracking-tight">
+            <span className="text-gradient animate-gradient">
               Darpan Neve
             </span>
-            {/* Include role in H1 for SEO, but visually hide it (sr-only is Tailwind util) */}
-            <span className="sr-only"> — Full-Stack Software Engineer</span>
           </h1>
 
-          {/* Typing animation for role (visual only; aria-hidden so screen readers use the sr-only text above) */}
-          <div className="h-16 md:h-20 flex items-center justify-center mb-8">
-            <h2
-              className="text-2xl md:text-4xl font-semibold text-muted-foreground font-mono"
-              aria-hidden="true"
-            >
-              <span className="typing-cursor">{typedText}</span>
+          <div className="h-20 flex items-center justify-center mb-8">
+            <h2 className="text-xl md:text-3xl font-medium text-foreground max-w-4xl leading-relaxed">
+              Building scalable digital experiences with
+              <span className="text-primary font-semibold"> modern technology</span>
             </h2>
           </div>
 
-          {/* Description */}
-          <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto mb-12 leading-relaxed">
-            I craft exceptional digital experiences with modern technologies,
-            specializing in scalable mobile solutions and innovative web
-            applications.
+          <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto mb-12 leading-relaxed">
+            Specializing in Flutter, FastAPI, and React to create
+            high-performance web and mobile applications that drive results.
           </p>
 
-          {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center animate-fade-in">
-            <Link href="#projects">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
+            <Link href="#contact">
               <Button
                 size="lg"
-                className="group relative overflow-hidden bg-gradient-to-r from-primary to-cyan-500 hover:from-cyan-500 hover:to-primary text-white font-semibold px-8 py-3 rounded-full glow-effect hover:scale-105 transition-all duration-300"
+                className="group relative overflow-hidden bg-primary hover:bg-primary/90 text-primary-foreground font-semibold px-8 py-6 rounded-full transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-primary/30"
               >
-                <span className="relative z-10 flex items-center">
-                  View My Work
-                  <ExternalLink className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform duration-300" />
+                <span className="relative z-10 flex items-center gap-2">
+                  <Send className="h-5 w-5" />
+                  Let's Work Together
                 </span>
+              </Button>
+            </Link>
+            <Link href="#projects">
+              <Button
+                variant="outline"
+                size="lg"
+                className="group border-2 border-border hover:border-primary hover:bg-primary/5 font-semibold px-8 py-6 rounded-full transition-all duration-300 hover:scale-105"
+              >
+                <Briefcase className="mr-2 h-5 w-5 transition-transform group-hover:rotate-12" />
+                View Projects
               </Button>
             </Link>
             <a
@@ -78,25 +169,32 @@ export const Hero = () => {
               rel="noopener noreferrer"
             >
               <Button
-                variant="outline"
+                variant="ghost"
                 size="lg"
-                className="group border-2 border-primary/50 hover:border-primary hover:bg-primary/10 font-semibold px-8 py-3 rounded-full hover:scale-105 transition-all duration-300"
+                className="group font-semibold px-8 py-6 rounded-full hover:bg-secondary transition-all duration-300"
               >
-                <Download className="mr-2 h-4 w-4 group-hover:animate-bounce" />
-                Download Resume
+                <Download className="mr-2 h-5 w-5 group-hover:animate-bounce" />
+                Resume
               </Button>
             </a>
           </div>
 
-          {/* Scroll indicator */}
-          <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-            <ChevronDown className="h-6 w-6 text-primary animate-pulse" />
+          <div className="flex items-center justify-center gap-6 text-sm text-muted-foreground mb-16">
+            <div className="flex items-center gap-2">
+              <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
+              <span>Open to new opportunities</span>
+            </div>
+          </div>
+
+          <div className="flex justify-center">
+            <div className="animate-bounce">
+              <ChevronDown className="h-6 w-6 text-primary animate-pulse" />
+            </div>
           </div>
         </div>
       </div>
 
-      {/* Gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-background/50 pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-background/80 pointer-events-none" />
     </section>
   );
 };

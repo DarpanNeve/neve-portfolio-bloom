@@ -66,150 +66,136 @@ export const ProjectsClient = ({ children }: { children: React.ReactNode }) => {
         ref={sectionRef}
       >
         <div
-          className={`transition-all duration-1000 ${
-            isVisible ? "animate-fade-in" : "opacity-0 translate-y-8"
-          }`}
+          className={`transition-all duration-1000 ${isVisible ? "animate-fade-in" : "opacity-0 translate-y-8"
+            }`}
         >
           {children}
         </div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {projects.map((project, index) => (
               <Card
                 key={project.title}
-                className={`group cursor-pointer transition-all duration-500 border-2 border-border/50 hover:border-primary/50 bg-card/50 backdrop-blur-sm hover:bg-card/80 hover:shadow-xl hover:shadow-primary/10 hover:-translate-y-2 ${
-                  isVisible ? "animate-fade-in" : "opacity-0 translate-y-8"
-                }`}
+                className={`group cursor-pointer transition-all duration-500 border border-border/50 hover:border-primary/40 bg-card/80 backdrop-blur-sm hover:shadow-2xl hover:shadow-primary/10 hover:-translate-y-2 overflow-hidden flex flex-col ${isVisible ? "animate-fade-in" : "opacity-0 translate-y-8"
+                  }`}
                 style={{ animationDelay: `${index * 100}ms` }}
                 onClick={() => openProjectModal(project)}
               >
-                <CardHeader className="pb-4">
-                  {/* Project Image */}
-                  <div className="aspect-video rounded-lg overflow-hidden mb-4 bg-gradient-to-br from-primary/20 to-purple-500/20 relative">
-                    {project.image ? (
-                      <img
-                        src={project.image}
-                        alt={`${project.title} preview`}
-                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                      />
-                    ) : (
-                      <div className="w-full h-full flex items-center justify-center">
-                        <div
-                          className={`w-16 h-16 rounded-full bg-gradient-to-r ${project.color} flex items-center justify-center text-white group-hover:scale-110 transition-transform duration-300`}
-                        >
-                          {project.icon}
-                        </div>
-                      </div>
-                    )}
-                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300 flex items-center justify-center">
-                      <ChevronRight className="h-8 w-8 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                    </div>
-                  </div>
-
-                  {/* Project Header */}
-                  <div className="flex items-start justify-between">
-                    <div className="flex items-center space-x-3">
+                {/* Project Image */}
+                <div className="relative aspect-video overflow-hidden bg-gradient-to-br from-primary/10 to-purple-500/10">
+                  {project.image ? (
+                    <img
+                      src={project.image}
+                      alt={`${project.title} preview`}
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                    />
+                  ) : (
+                    <div className="w-full h-full flex items-center justify-center">
                       <div
-                        className={`p-2 rounded-lg bg-gradient-to-r ${project.color} text-white flex-shrink-0`}
+                        className={`w-20 h-20 rounded-2xl bg-gradient-to-r ${project.color} flex items-center justify-center text-white shadow-lg group-hover:scale-110 transition-transform duration-500`}
                       >
                         {project.icon}
                       </div>
-                      <div className="min-w-0">
-                        <CardTitle className="text-lg font-bold text-foreground group-hover:text-primary transition-colors duration-300 truncate">
-                          {project.title}
-                        </CardTitle>
-                        <p className="text-sm text-muted-foreground font-medium">
-                          {project.category}
-                        </p>
-                      </div>
+                    </div>
+                  )}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  <div className="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <div className="bg-primary/90 backdrop-blur-sm text-primary-foreground px-3 py-1.5 rounded-full text-xs font-semibold shadow-lg">
+                      View Details
                     </div>
                   </div>
-                </CardHeader>
+                </div>
 
-                <CardContent className="pt-0">
-                  {/* Description */}
-                  <p className="text-sm text-muted-foreground mb-4 line-clamp-3 leading-relaxed">
-                    {project.description}
-                  </p>
+                <CardContent className="p-6 flex flex-col flex-1">
+                  <div className="flex flex-col items-center text-center space-y-4 flex-1">
+                    {/* Title and Category */}
+                    <div className="space-y-2">
+                      <CardTitle className="text-xl font-bold text-foreground group-hover:text-primary transition-colors duration-300">
+                        {project.title}
+                      </CardTitle>
+                      <p className="text-sm text-muted-foreground font-medium">
+                        {project.category}
+                      </p>
+                    </div>
 
-                  {/* Key Metrics */}
-                  <div className="flex flex-wrap gap-1.5 mb-4">
-                    {project.metrics.slice(0, 2).map((metric) => (
-                      <Badge
-                        key={metric}
-                        variant="secondary"
-                        className="text-xs px-2 py-1 bg-primary/10 border-primary/20 text-primary hover:bg-primary/20 transition-colors duration-300"
-                      >
-                        {metric}
-                      </Badge>
-                    ))}
-                    {project.metrics.length > 2 && (
-                      <Badge
-                        variant="secondary"
-                        className="text-xs px-2 py-1 bg-muted/50"
-                      >
-                        +{project.metrics.length - 2} more
-                      </Badge>
-                    )}
+                    {/* Description */}
+                    <p className="text-sm text-muted-foreground line-clamp-2 leading-relaxed">
+                      {project.description}
+                    </p>
+
+                    {/* Key Metrics */}
+                    <div className="flex flex-wrap gap-2 justify-center min-h-[32px]">
+                      {project.metrics.slice(0, 2).map((metric) => (
+                        <span
+                          key={metric}
+                          className="text-xs px-3 py-1.5 bg-primary/10 text-primary rounded-full font-medium border border-primary/20"
+                        >
+                          {metric}
+                        </span>
+                      ))}
+                      {project.metrics.length > 2 && (
+                        <span className="text-xs px-3 py-1.5 bg-secondary text-muted-foreground rounded-full font-medium">
+                          +{project.metrics.length - 2}
+                        </span>
+                      )}
+                    </div>
+
+                    {/* Technologies */}
+                    <div className="flex flex-wrap gap-2 justify-center min-h-[32px]">
+                      {project.technologies.slice(0, 3).map((tech) => (
+                        <span
+                          key={tech}
+                          className="text-xs px-3 py-1.5 bg-secondary text-foreground rounded-full font-medium border border-border/50"
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                      {project.technologies.length > 3 && (
+                        <span className="text-xs px-3 py-1.5 bg-secondary text-muted-foreground rounded-full font-medium">
+                          +{project.technologies.length - 3}
+                        </span>
+                      )}
+                    </div>
                   </div>
 
-                  {/* Technologies - Mobile optimized */}
-                  <div className="flex flex-wrap gap-1.5 mb-4">
-                    {project.technologies.slice(0, 3).map((tech) => (
-                      <Badge
-                        key={tech}
-                        variant="outline"
-                        className="text-xs px-2 py-1 border-border/50 hover:border-primary/50 transition-colors duration-300"
-                      >
-                        {tech}
-                      </Badge>
-                    ))}
-                    {project.technologies.length > 3 && (
-                      <Badge
-                        variant="outline"
-                        className="text-xs px-2 py-1 border-border/50"
-                      >
-                        +{project.technologies.length - 3}
-                      </Badge>
-                    )}
-                  </div>
-
-                  {/* Action Buttons */}
-                  <div className="flex gap-2">
-                    {project.codeLink && (
-                      <Button
-                        variant="outline"
-                        size="sm"
-                        className="flex-1 text-xs hover:scale-105 transition-all duration-300"
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          handleLinkClick(project.codeLink);
-                        }}
-                      >
-                        <Github className="h-3 w-3 mr-1.5" />
-                        Code
-                      </Button>
-                    )}
-                    {project.liveLink && (
-                      <Button
-                        size="sm"
-                        className="flex-1 text-xs hover:scale-105 transition-all duration-300 bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700"
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          handleLinkClick(project.liveLink);
-                        }}
-                      >
-                        <ExternalLink className="h-3 w-3 mr-1.5" />
-                        Live
-                      </Button>
-                    )}
-                    {!project.codeLink && !project.liveLink && (
-                      <Badge
-                        variant="secondary"
-                        className="flex-1 justify-center py-2 bg-amber-100 text-amber-800 border-amber-200"
-                      >
-                        In Progress
-                      </Badge>
+                  {/* Action Buttons - Always at bottom */}
+                  <div className="mt-6 pt-4 border-t border-border/50">
+                    {(project.codeLink || project.liveLink) ? (
+                      <div className="flex gap-3 justify-center">
+                        {project.codeLink && (
+                          <Button
+                            variant="outline"
+                            size="sm"
+                            className="min-w-[100px] text-xs hover:bg-primary/10 hover:text-primary hover:border-primary/50 transition-all"
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              handleLinkClick(project.codeLink);
+                            }}
+                          >
+                            <Github className="h-3.5 w-3.5 mr-1.5" />
+                            Code
+                          </Button>
+                        )}
+                        {project.liveLink && (
+                          <Button
+                            size="sm"
+                            className="min-w-[100px] text-xs bg-primary hover:bg-primary/90 shadow-md hover:shadow-lg transition-all"
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              handleLinkClick(project.liveLink);
+                            }}
+                          >
+                            <ExternalLink className="h-3.5 w-3.5 mr-1.5" />
+                            Live
+                          </Button>
+                        )}
+                      </div>
+                    ) : (
+                      <div className="flex justify-center">
+                        <div className="px-6 py-2 bg-amber-50 dark:bg-amber-950/30 text-amber-700 dark:text-amber-400 rounded-full border border-amber-200 dark:border-amber-800">
+                          <span className="text-xs font-medium">In Progress</span>
+                        </div>
+                      </div>
                     )}
                   </div>
                 </CardContent>
@@ -222,143 +208,141 @@ export const ProjectsClient = ({ children }: { children: React.ReactNode }) => {
       {/* Project Detail Modal */}
       {isModalOpen && selectedProject && (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-fade-in"
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-md animate-fade-in"
           onClick={closeProjectModal}
         >
           <div
-            className="relative w-full max-w-4xl max-h-[90vh] bg-background rounded-2xl border border-border/50 shadow-2xl overflow-hidden animate-scale-in"
+            className="relative w-full max-w-5xl max-h-[90vh] bg-background rounded-3xl border border-border/50 shadow-2xl overflow-hidden animate-scale-in"
             onClick={(e) => e.stopPropagation()}
           >
-            {/* Modal Header */}
-            <div className="sticky top-0 z-10 bg-background/95 backdrop-blur-sm border-b border-border/50 p-4 sm:p-6">
-              <div className="flex items-center justify-between">
-                <div className="flex items-center space-x-4">
-                  <div
-                    className={`p-3 rounded-xl bg-gradient-to-r ${selectedProject.color} text-white`}
-                  >
-                    {selectedProject.icon}
+            {/* Close Button */}
+            <button
+              onClick={closeProjectModal}
+              className="absolute top-4 right-4 z-20 p-2 rounded-full bg-secondary/80 backdrop-blur-sm hover:bg-destructive/20 hover:text-destructive transition-all duration-300 hover:scale-110"
+              aria-label="Close modal"
+            >
+              <X className="h-5 w-5" />
+            </button>
+
+            {/* Scrollable Content */}
+            <div className="overflow-y-auto max-h-[90vh] scrollbar-thin">
+              {/* Hero Image Section */}
+              <div className="relative h-64 md:h-80 bg-gradient-to-br from-primary/20 to-purple-500/20 overflow-hidden">
+                {selectedProject.image ? (
+                  <img
+                    src={selectedProject.image}
+                    alt={`${selectedProject.title} screenshot`}
+                    className="w-full h-full object-cover"
+                    onError={(e) => (e.currentTarget.style.display = "none")}
+                  />
+                ) : (
+                  <div className="w-full h-full flex items-center justify-center">
+                    <div
+                      className={`w-32 h-32 rounded-3xl bg-gradient-to-r ${selectedProject.color} flex items-center justify-center text-white shadow-2xl`}
+                    >
+                      <div className="scale-150">{selectedProject.icon}</div>
+                    </div>
                   </div>
-                  <div>
-                    <h3 className="text-xl sm:text-2xl font-bold text-foreground">
-                      {selectedProject.title}
-                    </h3>
-                    <p className="text-muted-foreground font-medium">
-                      {selectedProject.category}
-                    </p>
+                )}
+                <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent" />
+              </div>
+
+              {/* Content Section */}
+              <div className="px-6 md:px-12 pb-12 -mt-16 relative z-10">
+                {/* Title Section */}
+                <div className="text-center mb-8">
+                  <div className="inline-flex items-center gap-3 mb-4">
+                    <div
+                      className={`p-4 rounded-2xl bg-gradient-to-r ${selectedProject.color} text-white shadow-lg`}
+                    >
+                      {selectedProject.icon}
+                    </div>
+                  </div>
+                  <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-3">
+                    {selectedProject.title}
+                  </h2>
+                  <p className="text-lg text-muted-foreground font-medium">
+                    {selectedProject.category}
+                  </p>
+                </div>
+
+                {/* Description */}
+                <div className="mb-8">
+                  <h3 className="text-xl font-semibold text-foreground mb-4 flex items-center gap-2">
+                    <div className="w-1 h-6 bg-primary rounded-full" />
+                    About This Project
+                  </h3>
+                  <p className="text-muted-foreground leading-relaxed text-lg">
+                    {selectedProject.longDescription}
+                  </p>
+                </div>
+
+                {/* Metrics Section */}
+                <div className="mb-8">
+                  <h3 className="text-xl font-semibold text-foreground mb-4 flex items-center gap-2">
+                    <div className="w-1 h-6 bg-primary rounded-full" />
+                    Key Achievements
+                  </h3>
+                  <div className="flex flex-wrap gap-3">
+                    {selectedProject.metrics.map((metric) => (
+                      <span
+                        key={metric}
+                        className="px-4 py-2 bg-primary/10 border border-primary/30 text-primary rounded-full text-sm font-semibold hover:bg-primary/20 transition-colors duration-300"
+                      >
+                        {metric}
+                      </span>
+                    ))}
                   </div>
                 </div>
-                <Button
-                  variant="ghost"
-                  size="icon"
-                  onClick={closeProjectModal}
-                  className="rounded-full hover:bg-destructive/20 hover:text-destructive transition-colors duration-200"
-                >
-                  <X className="h-5 w-5" />
-                </Button>
-              </div>
-            </div>
 
-            {/* Modal Content */}
-            <div className="p-4 sm:p-6 overflow-y-auto max-h-[calc(90vh-120px)]">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {/* Left Column */}
-                <div className="aspect-video rounded-lg overflow-hidden bg-gradient-to-br from-primary/20 to-purple-500/20">
-                  {selectedProject.image ? (
-                    <img
-                      src={selectedProject.image}
-                      alt={`${selectedProject.title} screenshot`}
-                      className="w-full h-full object-cover"
-                      onError={(e) => (e.currentTarget.style.display = "none")}
-                    />
-                  ) : (
-                    <div className="w-full h-full flex items-center justify-center">
-                      <div className="text-center">
-                        <div
-                          className={`w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-r ${selectedProject.color} flex items-center justify-center text-white`}
-                        >
-                          {selectedProject.icon}
-                        </div>
-                        <p className="text-muted-foreground">Project Preview</p>
+                {/* Technologies Section */}
+                <div className="mb-10">
+                  <h3 className="text-xl font-semibold text-foreground mb-4 flex items-center gap-2">
+                    <div className="w-1 h-6 bg-primary rounded-full" />
+                    Technologies Used
+                  </h3>
+                  <div className="flex flex-wrap gap-3">
+                    {selectedProject.technologies.map((tech) => (
+                      <span
+                        key={tech}
+                        className="px-4 py-2 bg-secondary border border-border/50 text-foreground rounded-full text-sm font-medium hover:border-primary/50 hover:bg-primary/5 transition-all duration-300"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Action Buttons */}
+                <div className="flex flex-col sm:flex-row gap-4 justify-center pt-6 border-t border-border/50">
+                  {selectedProject.codeLink && (
+                    <Button
+                      variant="outline"
+                      size="lg"
+                      className="min-w-[180px] gap-2 hover:bg-primary/10 hover:text-primary hover:border-primary/50 hover:scale-105 transition-all duration-300"
+                      onClick={() => handleLinkClick(selectedProject.codeLink)}
+                    >
+                      <Github className="h-5 w-5" />
+                      View Source Code
+                    </Button>
+                  )}
+                  {selectedProject.liveLink && (
+                    <Button
+                      size="lg"
+                      className="min-w-[180px] gap-2 bg-primary hover:bg-primary/90 shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300"
+                      onClick={() => handleLinkClick(selectedProject.liveLink)}
+                    >
+                      <ExternalLink className="h-5 w-5" />
+                      Visit Live Site
+                    </Button>
+                  )}
+                  {!selectedProject.codeLink && !selectedProject.liveLink && (
+                    <div className="flex justify-center">
+                      <div className="px-8 py-3 bg-amber-50 dark:bg-amber-950/30 text-amber-700 dark:text-amber-400 rounded-full border border-amber-200 dark:border-amber-800">
+                        <span className="text-sm font-semibold">Project Coming Soon</span>
                       </div>
                     </div>
                   )}
-                </div>
-
-                {/* Right Column */}
-                <div className="flex flex-col justify-between">
-                  <div>
-                    <h4 className="text-lg font-semibold text-foreground mb-3">
-                      About This Project
-                    </h4>
-                    <p className="text-muted-foreground leading-relaxed mb-6">
-                      {selectedProject.longDescription}
-                    </p>
-
-                    <h4 className="text-lg font-semibold text-foreground mb-3">
-                      Key Achievements
-                    </h4>
-                    <div className="flex flex-wrap gap-2 mb-6">
-                      {selectedProject.metrics.map((metric) => (
-                        <Badge
-                          key={metric}
-                          variant="secondary"
-                          className="bg-primary/10 border-primary/20 text-primary hover:bg-primary/20 transition-colors duration-300"
-                        >
-                          {metric}
-                        </Badge>
-                      ))}
-                    </div>
-
-                    <h4 className="text-lg font-semibold text-foreground mb-3">
-                      Technologies Used
-                    </h4>
-                    <div className="flex flex-wrap gap-2 mb-6">
-                      {selectedProject.technologies.map((tech) => (
-                        <Badge
-                          key={tech}
-                          variant="outline"
-                          className="border-primary/30 hover:border-primary hover:bg-primary/10 transition-all duration-300"
-                        >
-                          {tech}
-                        </Badge>
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* Action Buttons */}
-                  <div className="flex flex-col sm:flex-row gap-3 mt-auto">
-                    {selectedProject.codeLink && (
-                      <Button
-                        variant="outline"
-                        className="flex items-center justify-center gap-2 hover:scale-105 transition-all duration-300"
-                        onClick={() =>
-                          handleLinkClick(selectedProject.codeLink)
-                        }
-                      >
-                        <Github className="h-4 w-4" />
-                        View Source Code
-                      </Button>
-                    )}
-                    {selectedProject.liveLink && (
-                      <Button
-                        className="flex items-center justify-center gap-2 hover:scale-105 transition-all duration-300 bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700"
-                        onClick={() =>
-                          handleLinkClick(selectedProject.liveLink)
-                        }
-                      >
-                        <ExternalLink className="h-4 w-4" />
-                        Visit Website
-                      </Button>
-                    )}
-                    {!selectedProject.codeLink && !selectedProject.liveLink && (
-                      <Badge
-                        variant="secondary"
-                        className="flex items-center justify-center py-3 bg-amber-100 text-amber-800 border-amber-200"
-                      >
-                        Project Coming Soon
-                      </Badge>
-                    )}
-                  </div>
                 </div>
               </div>
             </div>

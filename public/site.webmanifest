@@ -1,0 +1,31 @@
+{
+    "name": "Darpan Neve - Software Engineer",
+    "short_name": "Darpan Neve",
+    "description": "Full-Stack Software Engineer specializing in scalable web and mobile applications",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#ffffff",
+    "theme_color": "#1E40AF",
+    "orientation": "portrait-primary",
+    "icons": [
+        {
+            "src": "/logo.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "any maskable"
+        },
+        {
+            "src": "/logo.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "any maskable"
+        }
+    ],
+    "categories": [
+        "portfolio",
+        "developer",
+        "technology"
+    ],
+    "lang": "en-US",
+    "dir": "ltr"
+}

@@ -266,18 +266,19 @@ export const projects = [
 export const ProjectsContent = () => {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      {/* Section Header */}
-      <div className="text-center mb-12 lg:mb-16">
-        <h2
-          className={`text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 lg:mb-6 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent`}
-        >
-          Professional Development Portfolio
+      <div className="text-center mb-20">
+        <div className="inline-block mb-4">
+          <span className="text-sm font-semibold tracking-widest uppercase text-primary bg-primary/10 px-4 py-2 rounded-full border border-primary/20">
+            Portfolio
+          </span>
+        </div>
+        <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-gradient leading-tight">
+          Featured Projects
         </h2>
-        <p
-          className={`text-lg lg:text-xl text-muted-foreground max-w-3xl mx-auto`}
-        >
-          Showcasing enterprise-grade solutions with modern architecture
-          patterns and industry best practices
+        <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+          Production-grade applications built with modern architecture patterns,
+          <br className="hidden sm:block" />
+          delivering real value to thousands of users
         </p>
       </div>
     </div>

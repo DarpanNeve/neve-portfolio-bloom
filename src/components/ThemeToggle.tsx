@@ -1,36 +1,55 @@
 'use client';
-import { Moon, Sun } from "lucide-react";
+import { Moon, Sun, Monitor } from "lucide-react";
 import { useTheme } from "next-themes";
-
-import { Button } from "@/components/ui/button";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
+import { useEffect, useState } from "react";
 
 export function ThemeToggle() {
   const { setTheme, theme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) {
+    return (
+      <div className="h-10 w-[140px] bg-secondary/50 rounded-full animate-pulse" />
+    );
+  }
+
+  const themes = [
+    { value: 'light', icon: Sun, label: 'Light' },
+    { value: 'system', icon: Monitor, label: 'System' },
+    { value: 'dark', icon: Moon, label: 'Dark' },
+  ];
+
+  const activeIndex = themes.findIndex(t => t.value === theme);
 
   return (
-    <DropdownMenu>
-      <DropdownMenuTrigger asChild>
-        <Button variant="outline" size="icon">
-          <Sun className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
-          <Moon className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
-          <span className="sr-only">Toggle theme</span>
-        </Button>
-      </DropdownMenuTrigger>
-      <DropdownMenuContent align="end">
-        <DropdownMenuItem onClick={() => setTheme("light")}>
-          Light
-        </DropdownMenuItem>
-        <DropdownMenuItem onClick={() => setTheme("dark")}>Dark</DropdownMenuItem>
-        <DropdownMenuItem onClick={() => setTheme("system")}>
-          System
-        </DropdownMenuItem>
-      </DropdownMenuContent>
-    </DropdownMenu>
+    <div className="relative inline-flex items-center bg-secondary/50 backdrop-blur-sm rounded-full p-1 border border-border/50">
+      {/* Sliding background indicator */}
+      <div
+        className="absolute top-1 bottom-1 w-[44px] bg-primary rounded-full transition-all duration-300 ease-out shadow-lg"
+        style={{
+          left: `${4 + activeIndex * 46}px`,
+        }}
+      />
+
+      {/* Theme buttons */}
+      {themes.map(({ value, icon: Icon, label }) => (
+        <button
+          key={value}
+          onClick={() => setTheme(value)}
+          className={`relative z-10 flex items-center justify-center h-8 w-11 rounded-full transition-all duration-300 ${theme === value
+              ? 'text-primary-foreground'
+              : 'text-muted-foreground hover:text-foreground'
+            }`}
+          aria-label={`Switch to ${label} theme`}
+          title={label}
+        >
+          <Icon className="h-4 w-4" />
+        </button>
+      ))}
+    </div>
   );
 }
