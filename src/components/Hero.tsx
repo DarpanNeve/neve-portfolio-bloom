@@ -15,12 +15,18 @@ interface Ripple {
 
 export const Hero = () => {
   const [isLoaded, setIsLoaded] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const ripplesRef = useRef<Ripple[]>([]);
   const animationFrameRef = useRef<number>();
 
   useEffect(() => {
+    setIsMobile(window.innerWidth < 768);
     setIsLoaded(true);
+  }, []);
+
+  useEffect(() => {
+    if (isMobile) return; // Skip canvas on mobile
 
     const canvas = canvasRef.current;
     if (!canvas) return;
@@ -125,12 +131,14 @@ export const Hero = () => {
     >
       <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-transparent to-background pointer-events-none" aria-hidden="true" />
 
-      <canvas
-        ref={canvasRef}
-        className="absolute inset-0 pointer-events-none"
-        style={{ opacity: 0.5 }}
-        aria-hidden="true"
-      />
+      {!isMobile && (
+        <canvas
+          ref={canvasRef}
+          className="absolute inset-0 pointer-events-none"
+          style={{ opacity: 0.5 }}
+          aria-hidden="true"
+        />
+      )}
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10 py-20">
         <div className={`transition-all duration-1000 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>

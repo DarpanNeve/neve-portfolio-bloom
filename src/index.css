@@ -20,7 +20,7 @@
     --secondary-foreground: 0 0% 9%;
 
     --muted: 240 5% 96%;
-    --muted-foreground: 240 4% 46%;
+    --muted-foreground: 240 5% 40%;
 
     --accent: 224 76% 48%;
     --accent-foreground: 0 0% 100%;
@@ -61,7 +61,7 @@
     --secondary-foreground: 0 0% 98%;
 
     --muted: 240 4% 16%;
-    --muted-foreground: 240 5% 65%;
+    --muted-foreground: 240 5% 70%;
 
     --accent: 217 91% 60%;
     --accent-foreground: 0 0% 100%;
@@ -202,7 +202,6 @@
   }
 
   .performance-optimized {
-    will-change: auto;
     transform: translateZ(0);
     backface-visibility: hidden;
     contain: layout style paint;
@@ -242,6 +241,18 @@
     overflow: visible;
     clip: auto;
     white-space: normal;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+
+    .animate-fade-in,
+    .animate-slide-up,
+    .animate-slide-down,
+    .animate-scale-in,
+    .animate-gradient {
+      animation: none !important;
+      transition: none !important;
+    }
   }
 }
 
