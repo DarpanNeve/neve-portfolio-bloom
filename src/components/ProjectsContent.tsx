@@ -9,6 +9,39 @@ import {
 
 export const projects = [
   {
+    title: "Routine Path",
+    category: "Habit Tracking Platform",
+    description:
+      "Production-grade habit tracker with GitHub-style analytics, voice assistant integration, and comprehensive widget support.",
+    longDescription:
+      "Enterprise-level habit tracking application built with Flutter and Drift (SQLite), featuring GitHub-style contribution graphs for visual consistency tracking, interactive home screen widgets, and production-ready voice assistant integration (Google Assistant & Siri). Implements clean architecture with comprehensive error handling, offline-first with background sync, fuzzy matching algorithms for natural language processing, and WCAG AA accessibility compliance. The codebase follows SOLID principles with 90%+ test coverage, structured logging, Sentry integration, and optimized database queries with proper indexing for sub-100ms response times.",
+    technologies: [
+      "Flutter",
+      "Dart",
+      "Drift (SQLite)",
+      "Clean Architecture",
+      "Google Assistant",
+      "Siri Shortcuts",
+      "Widgets",
+      "Levenshtein Distance",
+      "BLoC Pattern",
+      "Riverpod",
+      "Sentry",
+    ],
+    icon: <TrendingUp className="h-6 w-6" />,
+    metrics: [
+      "Voice Assistant Ready",
+      "GitHub-style Analytics",
+      "Widget Support",
+      "Production Deployment",
+    ],
+    image:
+      "https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?w=600&h=400&fit=crop",
+    codeLink: null,
+    liveLink: "https://darpanneve.com/routinepath",
+    color: "from-violet-600 to-purple-700",
+  },
+  {
     title: "LockBloom",
     category: "Security Application",
     description:
