@@ -25,64 +25,89 @@ export const Hero = () => {
     const canvas = canvasRef.current;
     if (!canvas) return;
 
-    const ctx = canvas.getContext('2d');
+    const ctx = canvas.getContext('2d', { alpha: true, desynchronized: true });
     if (!ctx) return;
 
-    // Set canvas size
+    let isVisible = !document.hidden;
+    let canvasWidth = window.innerWidth;
+    let canvasHeight = window.innerHeight;
+
     const resizeCanvas = () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
+      canvasWidth = window.innerWidth;
+      canvasHeight = window.innerHeight;
+      canvas.width = canvasWidth;
+      canvas.height = canvasHeight;
+      canvas.style.width = `${canvasWidth}px`;
+      canvas.style.height = `${canvasHeight}px`;
     };
+
     resizeCanvas();
-    window.addEventListener('resize', resizeCanvas);
 
-    // Animation loop
-    const animate = () => {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
+    const handleResize = () => {
+      requestAnimationFrame(resizeCanvas);
+    };
 
-      // Update and draw ripples
-      ripplesRef.current = ripplesRef.current.filter(ripple => {
-        ripple.radius += ripple.speed;
-        ripple.opacity -= 0.002;
+    window.addEventListener('resize', handleResize, { passive: true });
 
-        if (ripple.opacity > 0 && ripple.radius < ripple.maxRadius) {
-          // Outer ripple
-          ctx.beginPath();
-          ctx.arc(ripple.x, ripple.y, ripple.radius, 0, Math.PI * 2);
-          ctx.strokeStyle = `hsla(224, 76%, 48%, ${ripple.opacity})`;
-          ctx.lineWidth = 3;
-          ctx.stroke();
+    const handleVisibilityChange = () => {
+      isVisible = !document.hidden;
+    };
 
-          // Middle ripple
-          ctx.beginPath();
-          ctx.arc(ripple.x, ripple.y, ripple.radius * 0.8, 0, Math.PI * 2);
-          ctx.strokeStyle = `hsla(220, 70%, 60%, ${ripple.opacity * 0.6})`;
-          ctx.lineWidth = 2;
-          ctx.stroke();
+    document.addEventListener('visibilitychange', handleVisibilityChange, { passive: true });
 
-          // Inner ripple
-          ctx.beginPath();
-          ctx.arc(ripple.x, ripple.y, ripple.radius * 0.6, 0, Math.PI * 2);
-          ctx.strokeStyle = `hsla(240, 65%, 65%, ${ripple.opacity * 0.3})`;
-          ctx.lineWidth = 1;
-          ctx.stroke();
+    let lastTime = 0;
+    const throttle = 1000 / 60;
 
-          return true;
-        }
-        return false;
-      });
+    const animate = (currentTime: number) => {
+      if (!isVisible) {
+        animationFrameRef.current = requestAnimationFrame(animate);
+        return;
+      }
+
+      if (currentTime - lastTime >= throttle) {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        ripplesRef.current = ripplesRef.current.filter(ripple => {
+          ripple.radius += ripple.speed;
+          ripple.opacity -= 0.002;
+
+          if (ripple.opacity > 0 && ripple.radius < ripple.maxRadius) {
+            ctx.beginPath();
+            ctx.arc(ripple.x, ripple.y, ripple.radius, 0, Math.PI * 2);
+            ctx.strokeStyle = `hsla(224, 76%, 48%, ${ripple.opacity})`;
+            ctx.lineWidth = 3;
+            ctx.stroke();
+
+            ctx.beginPath();
+            ctx.arc(ripple.x, ripple.y, ripple.radius * 0.8, 0, Math.PI * 2);
+            ctx.strokeStyle = `hsla(220, 70%, 60%, ${ripple.opacity * 0.6})`;
+            ctx.lineWidth = 2;
+            ctx.stroke();
+
+            ctx.beginPath();
+            ctx.arc(ripple.x, ripple.y, ripple.radius * 0.6, 0, Math.PI * 2);
+            ctx.strokeStyle = `hsla(240, 65%, 65%, ${ripple.opacity * 0.3})`;
+            ctx.lineWidth = 1;
+            ctx.stroke();
+
+            return true;
+          }
+          return false;
+        });
+
+        lastTime = currentTime;
+      }
 
       animationFrameRef.current = requestAnimationFrame(animate);
     };
 
-    animate();
+    animationFrameRef.current = requestAnimationFrame(animate);
 
-    // Initial center ripple on page load
-    const centerX = window.innerWidth / 2;
-    const centerY = window.innerHeight / 2;
-    const maxDimension = Math.max(window.innerWidth, window.innerHeight);
+    const initialRippleTimer = setTimeout(() => {
+      const centerX = canvasWidth / 2;
+      const centerY = canvasHeight / 2;
+      const maxDimension = Math.max(canvasWidth, canvasHeight);
 
-    setTimeout(() => {
       ripplesRef.current.push({
         x: centerX,
         y: centerY,
@@ -94,27 +119,28 @@ export const Hero = () => {
     }, 300);
 
     return () => {
-      window.removeEventListener('resize', resizeCanvas);
+      window.removeEventListener('resize', handleResize);
+      document.removeEventListener('visibilitychange', handleVisibilityChange);
       if (animationFrameRef.current) {
         cancelAnimationFrame(animationFrameRef.current);
       }
+      clearTimeout(initialRippleTimer);
     };
   }, []);
 
   return (
     <section
       id="home"
-      role="banner"
+      aria-label="Hero section"
       className="min-h-screen flex items-center justify-center relative overflow-hidden"
     >
-      {/* Clean background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-transparent to-background pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-transparent to-background pointer-events-none" aria-hidden="true" />
 
-      {/* Initial ripple canvas */}
       <canvas
         ref={canvasRef}
         className="absolute inset-0 pointer-events-none"
         style={{ opacity: 0.5 }}
+        aria-hidden="true"
       />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10 py-20">
@@ -141,14 +167,15 @@ export const Hero = () => {
             high-performance web and mobile applications that drive results.
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
+          <nav className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8" aria-label="Primary navigation">
             <Link href="#contact">
               <Button
                 size="lg"
                 className="group relative overflow-hidden bg-primary hover:bg-primary/90 text-primary-foreground font-semibold px-8 py-6 rounded-full transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-primary/30"
+                aria-label="Contact for work opportunities"
               >
                 <span className="relative z-10 flex items-center gap-2">
-                  <Send className="h-5 w-5" />
+                  <Send className="h-5 w-5" aria-hidden="true" />
                   Let's Work Together
                 </span>
               </Button>
@@ -158,8 +185,9 @@ export const Hero = () => {
                 variant="outline"
                 size="lg"
                 className="group border-2 border-border hover:border-primary hover:bg-primary/5 font-semibold px-8 py-6 rounded-full transition-all duration-300 hover:scale-105"
+                aria-label="View my projects"
               >
-                <Briefcase className="mr-2 h-5 w-5 transition-transform group-hover:rotate-12" />
+                <Briefcase className="mr-2 h-5 w-5 transition-transform group-hover:rotate-12" aria-hidden="true" />
                 View Projects
               </Button>
             </Link>
@@ -167,26 +195,27 @@ export const Hero = () => {
               href="https://drive.google.com/drive/folders/1zRIBlmmWRzW40bx947SKtCjhRIjcWKY7?usp=sharing"
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="Download resume (opens in new tab)"
             >
               <Button
                 variant="ghost"
                 size="lg"
                 className="group font-semibold px-8 py-6 rounded-full hover:bg-secondary transition-all duration-300"
               >
-                <Download className="mr-2 h-5 w-5 group-hover:animate-bounce" />
+                <Download className="mr-2 h-5 w-5 group-hover:animate-bounce" aria-hidden="true" />
                 Resume
               </Button>
             </a>
-          </div>
+          </nav>
 
           <div className="flex items-center justify-center gap-6 text-sm text-muted-foreground mb-16">
             <div className="flex items-center gap-2">
-              <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
+              <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" aria-hidden="true" />
               <span>Open to new opportunities</span>
             </div>
           </div>
 
-          <div className="flex justify-center">
+          <div className="flex justify-center" aria-hidden="true">
             <div className="animate-bounce">
               <ChevronDown className="h-6 w-6 text-primary animate-pulse" />
             </div>
@@ -194,7 +223,7 @@ export const Hero = () => {
         </div>
       </div>
 
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-background/80 pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-background/80 pointer-events-none" aria-hidden="true" />
     </section>
   );
 };

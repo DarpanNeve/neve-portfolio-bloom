@@ -171,9 +171,11 @@ export const sharedMetadata: Metadata = {
     robots: {
         index: true,
         follow: true,
+        nocache: false,
         googleBot: {
             index: true,
             follow: true,
+            noimageindex: false,
             'max-video-preview': -1,
             'max-image-preview': 'large',
             'max-snippet': -1,
@@ -204,6 +206,7 @@ export const sharedMetadata: Metadata = {
         description: SITE_CONFIG.description,
         images: [SITE_CONFIG.openGraph.image],
         creator: '@darpanneve',
+        site: '@darpanneve',
     },
     icons: {
         icon: [
@@ -211,9 +214,21 @@ export const sharedMetadata: Metadata = {
             { url: '/icon.svg', type: 'image/svg+xml' },
         ],
         apple: [{ url: '/apple-touch-icon.png', sizes: '180x180' }],
+        other: [
+            {
+                rel: 'mask-icon',
+                url: '/icon.svg',
+            },
+        ],
     },
     manifest: '/site.webmanifest',
     verification: {
-        google: 'verification_token_placeholder',
+        google: process.env.NEXT_PUBLIC_GOOGLE_VERIFICATION || '',
+    },
+    category: 'technology',
+    other: {
+        'mobile-web-app-capable': 'yes',
+        'apple-mobile-web-app-capable': 'yes',
+        'apple-mobile-web-app-status-bar-style': 'black-translucent',
     },
 };
