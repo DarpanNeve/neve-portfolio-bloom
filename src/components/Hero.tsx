@@ -181,7 +181,7 @@ export const Hero = () => {
               <Button
                 variant="outline"
                 size="lg"
-                className="group border-2 border-border hover:border-primary hover:bg-primary/5 font-semibold px-8 py-6 rounded-full transition-all duration-300 hover:scale-105"
+                className="group border-2 border-border hover:border-primary hover:bg-primary/5 font-semibold px-8 py-6 rounded-full transition-all duration-300 hover:scale-105 hover:text-primary"
                 aria-label="View my projects"
               >
                 <Briefcase className="mr-2 h-5 w-5 transition-transform group-hover:rotate-12" aria-hidden="true" />
@@ -197,7 +197,7 @@ export const Hero = () => {
               <Button
                 variant="ghost"
                 size="lg"
-                className="group font-semibold px-8 py-6 rounded-full hover:bg-secondary transition-all duration-300"
+                className="group font-semibold px-8 py-6 rounded-full hover:bg-secondary transition-all duration-300 hover:text-primary"
               >
                 <Download className="mr-2 h-5 w-5 group-hover:animate-bounce" aria-hidden="true" />
                 Resume

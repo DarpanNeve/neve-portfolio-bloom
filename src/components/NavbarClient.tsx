@@ -72,7 +72,7 @@ export const NavbarClient = ({ navItems, socialLinks }) => {
                   variant="ghost"
                   size="sm"
                   asChild
-                  className="h-10 w-10 rounded-full hover:bg-primary/10 hover:scale-110 transition-all duration-300"
+                  className="h-10 w-10 rounded-full hover:bg-primary/10 hover:scale-110 transition-all duration-300 hover:text-primary"
                 >
                   <a
                     href={href}
@@ -137,7 +137,7 @@ export const NavbarClient = ({ navItems, socialLinks }) => {
                       variant="ghost"
                       size="sm"
                       asChild
-                      className="h-10 w-10 rounded-full hover:bg-primary/10"
+                      className="h-10 w-10 rounded-full hover:bg-primary/10 hover:text-primary"
                     >
                       <a
                         href={href}
