@@ -77,7 +77,12 @@ export const ProjectsClient = ({ children }: { children: React.ReactNode }) => {
             {projects.map((project, index) => (
               <Card
                 key={project.title}
-                className={`group cursor-pointer transition-all duration-500 border border-border/50 hover:border-primary/40 bg-card/80 backdrop-blur-sm hover:shadow-2xl hover:shadow-primary/10 hover:-translate-y-2 overflow-hidden flex flex-col ${isVisible ? "animate-fade-in" : "opacity-0 translate-y-8"
+                className={`${
+                  // @ts-ignore
+                  project.visuallyHidden
+                    ? "sr-only"
+                    : `group cursor-pointer transition-all duration-500 border border-border/50 hover:border-primary/40 bg-card/80 backdrop-blur-sm hover:shadow-2xl hover:shadow-primary/10 hover:-translate-y-2 overflow-hidden flex flex-col ${isVisible ? "animate-fade-in" : "opacity-0 translate-y-8"
+                    }`
                   }`}
                 style={{ animationDelay: `${index * 100}ms` }}
                 onClick={() => openProjectModal(project)}

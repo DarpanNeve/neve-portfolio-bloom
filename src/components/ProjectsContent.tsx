@@ -212,6 +212,7 @@ export const projects = [
     codeLink: "https://github.com/DarpanNeve/hiresphere",
     liveLink: "https://hiresphere-pi.vercel.app/",
     color: "from-cyan-400 to-blue-600",
+    visuallyHidden: true,
   },
 ];
 
