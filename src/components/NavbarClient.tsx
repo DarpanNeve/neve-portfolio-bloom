@@ -76,8 +76,9 @@ export const NavbarClient = ({ navItems, socialLinks }) => {
                     key={label}
                     href={href}
                     onClick={() => {
-                      navigator.clipboard.writeText(email);
-                      toast.success("Email copied to clipboard!");
+                      navigator.clipboard.writeText(email)
+                        .then(() => toast.success("Email copied to clipboard!"))
+                        .catch(() => console.error("Failed to copy email"));
                     }}
                     aria-label={label}
                     className={buttonVariants({
@@ -163,8 +164,9 @@ export const NavbarClient = ({ navItems, socialLinks }) => {
                         key={label}
                         href={href}
                         onClick={() => {
-                          navigator.clipboard.writeText(email);
-                          toast.success("Email copied to clipboard!");
+                          navigator.clipboard.writeText(email)
+                            .then(() => toast.success("Email copied to clipboard!"))
+                            .catch(() => console.error("Failed to copy email"));
                         }}
                         aria-label={label}
                         className={buttonVariants({
