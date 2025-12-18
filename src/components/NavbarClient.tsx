@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react";
 import { Menu, X, Github, Linkedin, Mail, ExternalLink } from "lucide-react";
 import { ThemeToggle } from "./ThemeToggle";
-import { Button } from "./ui/button";
+import { Button, buttonVariants } from "./ui/button";
 
 const iconMap = {
   Github,
@@ -21,6 +21,15 @@ export const NavbarClient = ({ navItems, socialLinks }) => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  const handleMailtoClick = (e: React.MouseEvent, href: string) => {
+    e.preventDefault();
+    const link = document.createElement('a');
+    link.href = href;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
 
   return (
     <nav
@@ -66,23 +75,41 @@ export const NavbarClient = ({ navItems, socialLinks }) => {
           <div className="hidden md:flex items-center space-x-4">
             {socialLinks.map(({ icon, href, label }) => {
               const Icon = iconMap[icon];
-              return (
-                <Button
-                  key={label}
-                  variant="ghost"
-                  size="sm"
-                  asChild
-                  className="h-10 w-10 rounded-full hover:bg-primary/10 hover:scale-110 transition-all duration-300 hover:text-primary"
-                >
+              const isMailto = href.startsWith("mailto:");
+
+              if (isMailto) {
+                return (
                   <a
+                    key={label}
                     href={href}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                    onClick={(e) => handleMailtoClick(e, href)}
                     aria-label={label}
+                    className={buttonVariants({
+                      variant: "ghost",
+                      size: "sm",
+                      className: "h-10 w-10 rounded-full hover:bg-primary/10 hover:scale-110 transition-all duration-300 hover:text-primary"
+                    })}
                   >
                     <Icon className="h-4 w-4" />
                   </a>
-                </Button>
+                );
+              }
+
+              return (
+                <a
+                  key={label}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={label}
+                  className={buttonVariants({
+                    variant: "ghost",
+                    size: "sm",
+                    className: "h-10 w-10 rounded-full hover:bg-primary/10 hover:scale-110 transition-all duration-300 hover:text-primary"
+                  })}
+                >
+                  <Icon className="h-4 w-4" />
+                </a>
               );
             })}
             <ThemeToggle />
@@ -131,24 +158,41 @@ export const NavbarClient = ({ navItems, socialLinks }) => {
               <div className="flex space-x-3 pt-2 border-t border-border">
                 {socialLinks.map(({ icon, href, label }) => {
                   const Icon = iconMap[icon];
-                  return (
-                    <Button
-                      key={label}
-                      variant="ghost"
-                      size="sm"
-                      asChild
-                      className="h-10 w-10 rounded-full hover:bg-primary/10 hover:text-primary"
-                    >
+                  const isMailto = href.startsWith("mailto:");
+
+                  if (isMailto) {
+                    return (
                       <a
+                        key={label}
                         href={href}
-                        target="_blank"
-                        rel="noopener noreferrer"
+                        onClick={(e) => handleMailtoClick(e, href)}
                         aria-label={label}
+                        className={buttonVariants({
+                          variant: "ghost",
+                          size: "sm",
+                          className: "h-10 w-10 rounded-full hover:bg-primary/10 hover:text-primary"
+                        })}
                       >
                         <Icon className="h-4 w-4" />
-                        <ExternalLink className="h-3 w-3 ml-1" />
                       </a>
-                    </Button>
+                    );
+                  }
+
+                  return (
+                    <a
+                      key={label}
+                      href={href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={label}
+                      className={buttonVariants({
+                        variant: "ghost",
+                        size: "sm",
+                        className: "h-10 w-10 rounded-full hover:bg-primary/10 hover:text-primary"
+                      })}
+                    >
+                      <Icon className="h-4 w-4" />
+                    </a>
                   );
                 })}
               </div>

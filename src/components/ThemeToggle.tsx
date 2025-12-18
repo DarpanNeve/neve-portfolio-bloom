@@ -31,7 +31,7 @@ export function ThemeToggle() {
       <div
         className="absolute top-1 bottom-1 w-[44px] bg-primary rounded-full transition-all duration-300 ease-out shadow-lg"
         style={{
-          left: `${4 + activeIndex * 46}px`,
+          left: `${4 + activeIndex * 44}px`,
         }}
       />
 
