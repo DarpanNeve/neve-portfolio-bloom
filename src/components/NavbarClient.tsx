@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { Menu, X, Github, Linkedin, Mail, ExternalLink } from "lucide-react";
 import { ThemeToggle } from "./ThemeToggle";
 import { Button, buttonVariants } from "./ui/button";
+import { toast } from "sonner";
 
 const iconMap = {
   Github,
@@ -21,15 +22,6 @@ export const NavbarClient = ({ navItems, socialLinks }) => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
-  const handleMailtoClick = (e: React.MouseEvent, href: string) => {
-    e.preventDefault();
-    const link = document.createElement('a');
-    link.href = href;
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-  };
 
   return (
     <nav
@@ -78,11 +70,15 @@ export const NavbarClient = ({ navItems, socialLinks }) => {
               const isMailto = href.startsWith("mailto:");
 
               if (isMailto) {
+                const email = href.replace("mailto:", "");
                 return (
                   <a
                     key={label}
                     href={href}
-                    onClick={(e) => handleMailtoClick(e, href)}
+                    onClick={() => {
+                      navigator.clipboard.writeText(email);
+                      toast.success("Email copied to clipboard!");
+                    }}
                     aria-label={label}
                     className={buttonVariants({
                       variant: "ghost",
@@ -161,11 +157,15 @@ export const NavbarClient = ({ navItems, socialLinks }) => {
                   const isMailto = href.startsWith("mailto:");
 
                   if (isMailto) {
+                    const email = href.replace("mailto:", "");
                     return (
                       <a
                         key={label}
                         href={href}
-                        onClick={(e) => handleMailtoClick(e, href)}
+                        onClick={() => {
+                          navigator.clipboard.writeText(email);
+                          toast.success("Email copied to clipboard!");
+                        }}
                         aria-label={label}
                         className={buttonVariants({
                           variant: "ghost",
