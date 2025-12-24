@@ -18,13 +18,6 @@ export const ContactContent = () => {
       href: "#",
       color: "text-purple-500",
     },
-    {
-      icon: <Calendar className="h-6 w-6" />,
-      title: "Availability",
-      value: "Open for opportunities",
-      href: "#",
-      color: "text-green-500",
-    },
   ];
 
   const socialLinks = [

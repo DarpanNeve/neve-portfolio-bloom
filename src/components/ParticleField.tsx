@@ -12,6 +12,9 @@ interface Particle {
     vy: number;
     size: number;
     color: string;
+    driftAngle: number;
+    driftSpeed: number;
+    driftOffset: number;
 }
 
 interface ParticleFieldProps {
@@ -74,6 +77,9 @@ function ParticleFieldComponent({ className = '' }: ParticleFieldProps) {
                 vy: 0,
                 size: Math.random() * 2.5 + 1.5,
                 color: colors[Math.floor(Math.random() * colors.length)],
+                driftAngle: Math.random() * Math.PI * 2,
+                driftSpeed: Math.random() * 0.5 + 0.5,
+                driftOffset: Math.random() * Math.PI * 2,
             });
         }
 
@@ -183,6 +189,7 @@ function ParticleFieldComponent({ className = '' }: ParticleFieldProps) {
             const isDark = resolvedTheme === 'dark';
             const connectionColor = isDark ? COLORS.dark.connections : COLORS.light.connections;
             const maxVelocity = 4;
+            const time = Date.now() * 0.001;
 
             for (let i = 0; i < particles.length; i++) {
                 const p = particles[i];
@@ -203,8 +210,11 @@ function ParticleFieldComponent({ className = '' }: ParticleFieldProps) {
                     }
                 }
 
-                p.vx += (p.baseX - p.x) * 0.03;
-                p.vy += (p.baseY - p.y) * 0.03;
+                const driftX = Math.cos(p.driftAngle + time * p.driftSpeed + p.driftOffset) * 0.4;
+                const driftY = Math.sin(p.driftAngle + time * p.driftSpeed + p.driftOffset) * 0.4;
+
+                p.vx += (p.baseX - p.x) * 0.008 + driftX;
+                p.vy += (p.baseY - p.y) * 0.008 + driftY;
 
                 p.vx *= 0.92;
                 p.vy *= 0.92;

@@ -87,13 +87,6 @@ export const Hero = () => {
             </a>
           </nav>
 
-          <div className="flex items-center justify-center gap-6 text-sm text-muted-foreground mb-16">
-            <div className="flex items-center gap-2">
-              <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" aria-hidden="true" />
-              <span>Open to new opportunities</span>
-            </div>
-          </div>
-
           <div className="flex justify-center" aria-hidden="true">
             <div className="animate-bounce">
               <ChevronDown className="h-6 w-6 text-primary animate-pulse" />
