@@ -4,6 +4,7 @@ import { Button } from "./ui/button";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { ParticleField } from "./ParticleField";
+import { HeroGigs } from "./HeroGigs";
 
 export const Hero = () => {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -101,7 +102,9 @@ export const Hero = () => {
         </div>
       </div>
 
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-background/80 pointer-events-none" aria-hidden="true" />
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-background/80 pointer-events-none z-[2]" aria-hidden="true" />
+
+      <HeroGigs />
     </section>
   );
 };
