@@ -2,125 +2,14 @@
 import { ChevronDown, Send, Briefcase, Download } from "lucide-react";
 import { Button } from "./ui/button";
 import Link from "next/link";
-import { useEffect, useState, useRef } from "react";
-
-interface Ripple {
-  x: number;
-  y: number;
-  radius: number;
-  maxRadius: number;
-  opacity: number;
-  speed: number;
-}
+import { useEffect, useState } from "react";
+import { ParticleField } from "./ParticleField";
 
 export const Hero = () => {
   const [isLoaded, setIsLoaded] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
-  const canvasRef = useRef<HTMLCanvasElement>(null);
-  const ripplesRef = useRef<Ripple[]>([]);
-  const animationFrameRef = useRef<number>();
 
   useEffect(() => {
-    setIsMobile(window.innerWidth < 768);
     setIsLoaded(true);
-  }, []);
-
-  useEffect(() => {
-    if (isMobile) return; // Skip canvas on mobile
-
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-
-    const ctx = canvas.getContext('2d', { alpha: true, desynchronized: true });
-    if (!ctx) return;
-
-    let isVisible = !document.hidden;
-    let canvasWidth = window.innerWidth;
-    let canvasHeight = window.innerHeight;
-
-    const resizeCanvas = () => {
-      canvasWidth = window.innerWidth;
-      canvasHeight = window.innerHeight;
-      canvas.width = canvasWidth;
-      canvas.height = canvasHeight;
-      canvas.style.width = `${canvasWidth}px`;
-      canvas.style.height = `${canvasHeight}px`;
-    };
-
-    resizeCanvas();
-
-    const handleResize = () => {
-      requestAnimationFrame(resizeCanvas);
-    };
-
-    window.addEventListener('resize', handleResize, { passive: true });
-
-    const handleVisibilityChange = () => {
-      isVisible = !document.hidden;
-    };
-
-    document.addEventListener('visibilitychange', handleVisibilityChange, { passive: true });
-
-    let lastTime = 0;
-    const throttle = 1000 / 30; // Reduced to 30fps for better performance
-
-    const animate = (currentTime: number) => {
-      if (!isVisible) {
-        animationFrameRef.current = requestAnimationFrame(animate);
-        return;
-      }
-
-      if (currentTime - lastTime >= throttle) {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-        ripplesRef.current = ripplesRef.current.filter(ripple => {
-          ripple.radius += ripple.speed;
-          ripple.opacity -= 0.003; // Faster fade
-
-          if (ripple.opacity > 0 && ripple.radius < ripple.maxRadius) {
-            // Draw only one ripple for performance
-            ctx.beginPath();
-            ctx.arc(ripple.x, ripple.y, ripple.radius, 0, Math.PI * 2);
-            ctx.strokeStyle = `hsla(224, 76%, 48%, ${ripple.opacity})`;
-            ctx.lineWidth = 2;
-            ctx.stroke();
-
-            return true;
-          }
-          return false;
-        });
-
-        lastTime = currentTime;
-      }
-
-      animationFrameRef.current = requestAnimationFrame(animate);
-    };
-
-    animationFrameRef.current = requestAnimationFrame(animate);
-
-    const initialRippleTimer = setTimeout(() => {
-      const centerX = canvasWidth / 2;
-      const centerY = canvasHeight / 2;
-      const maxDimension = Math.max(canvasWidth, canvasHeight);
-
-      ripplesRef.current.push({
-        x: centerX,
-        y: centerY,
-        radius: 0,
-        maxRadius: maxDimension * 1.2, // Smaller radius
-        opacity: 0.4, // Lower opacity
-        speed: 6, // Slightly faster
-      });
-    }, 300);
-
-    return () => {
-      window.removeEventListener('resize', handleResize);
-      document.removeEventListener('visibilitychange', handleVisibilityChange);
-      if (animationFrameRef.current) {
-        cancelAnimationFrame(animationFrameRef.current);
-      }
-      clearTimeout(initialRippleTimer);
-    };
   }, []);
 
   return (
@@ -129,16 +18,8 @@ export const Hero = () => {
       aria-label="Hero section"
       className="min-h-screen flex items-center justify-center relative overflow-hidden"
     >
-      <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-transparent to-background pointer-events-none" aria-hidden="true" />
-
-      {!isMobile && (
-        <canvas
-          ref={canvasRef}
-          className="absolute inset-0 pointer-events-none"
-          style={{ opacity: 0.5 }}
-          aria-hidden="true"
-        />
-      )}
+      <ParticleField />
+      <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-transparent to-background pointer-events-none z-[1]" aria-hidden="true" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10 py-20">
         <div className={`transition-opacity duration-700 ${isLoaded ? 'opacity-100' : 'opacity-100'}`}>
