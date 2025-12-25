@@ -148,6 +148,44 @@ export function generateStructuredData() {
                     },
                 ],
             },
+            {
+                '@type': 'FAQPage',
+                '@id': `${SITE_CONFIG.url}/#faq`,
+                mainEntity: [
+                    {
+                        '@type': 'Question',
+                        name: 'What services does Darpan Neve offer?',
+                        acceptedAnswer: {
+                            '@type': 'Answer',
+                            text: 'I offer full-stack web development, mobile app development with Flutter, cloud architecture consulting, API development, and DevOps services. I specialize in React, Node.js, Python, and scalable system design.',
+                        },
+                    },
+                    {
+                        '@type': 'Question',
+                        name: 'Is Darpan Neve available for freelance projects?',
+                        acceptedAnswer: {
+                            '@type': 'Answer',
+                            text: 'Yes, I am available for freelance projects, contract work, and full-time opportunities. I work with clients worldwide and can collaborate remotely.',
+                        },
+                    },
+                    {
+                        '@type': 'Question',
+                        name: 'What technologies does Darpan Neve work with?',
+                        acceptedAnswer: {
+                            '@type': 'Answer',
+                            text: 'I work with React, Next.js, Node.js, Python, Flutter, TypeScript, AWS, Docker, MongoDB, PostgreSQL, and modern DevOps tools. I focus on building scalable, production-grade applications.',
+                        },
+                    },
+                    {
+                        '@type': 'Question',
+                        name: 'How can I contact Darpan Neve for a project?',
+                        acceptedAnswer: {
+                            '@type': 'Answer',
+                            text: 'You can reach me through the contact form on this website, via email at darpanneve3@gmail.com, or connect with me on LinkedIn. I typically respond within 24 hours.',
+                        },
+                    },
+                ],
+            },
         ],
     };
 }

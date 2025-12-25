@@ -1,0 +1,23 @@
+import { MetadataRoute } from 'next';
+
+export default function robots(): MetadataRoute.Robots {
+    return {
+        rules: [
+            {
+                userAgent: '*',
+                allow: '/',
+                disallow: ['/api/', '/_next/', '/static/'],
+            },
+            {
+                userAgent: 'Googlebot',
+                allow: '/',
+            },
+            {
+                userAgent: 'Bingbot',
+                allow: '/',
+            },
+        ],
+        sitemap: 'https://darpanneve.com/sitemap.xml',
+        host: 'https://darpanneve.com',
+    };
+}

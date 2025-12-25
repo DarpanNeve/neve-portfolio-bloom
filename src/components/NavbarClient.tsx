@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { Menu, X, Github, Linkedin, Mail, ExternalLink } from "lucide-react";
 import { ThemeToggle } from "./ThemeToggle";
 import { Button, buttonVariants } from "./ui/button";
+import { ShareButtons } from "./ShareButtons";
 import { toast } from "sonner";
 
 const iconMap = {
@@ -109,6 +110,7 @@ export const NavbarClient = ({ navItems, socialLinks }) => {
                 </a>
               );
             })}
+            <ShareButtons />
             <ThemeToggle />
           </div>
 
