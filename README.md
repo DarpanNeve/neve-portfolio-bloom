@@ -1,69 +1,76 @@
-# Welcome to your Lovable project
+# Darpan Neve - Portfolio
 
-## Project info
+Personal portfolio website showcasing my work as a Full-Stack Software Engineer.
 
-**URL**: https://lovable.dev/projects/fe6c013e-38d6-4ddc-8521-25eac191307e
+## Live Site
 
-## How can I edit this code?
+**URL**: [darpanneve.com](https://darpanneve.com)
 
-There are several ways of editing your application.
+## Tech Stack
 
-**Use Lovable**
+- **Framework**: Next.js 16 (App Router)
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS
+- **UI Components**: shadcn/ui
+- **Animations**: Custom Canvas/WebGL particle effects
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/fe6c013e-38d6-4ddc-8521-25eac191307e) and start prompting.
+## Getting Started
 
-Changes made via Lovable will be committed automatically to this repo.
+### Prerequisites
 
-**Use your preferred IDE**
+- Node.js 18+ 
+- npm or bun
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
+### Installation
 
 ```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+# Clone the repository
+git clone https://github.com/DarpanNeve/neve-portfolio-bloom.git
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+# Navigate to the project directory
+cd neve-portfolio-bloom
 
-# Step 3: Install the necessary dependencies.
-npm i
+# Install dependencies
+npm install
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+# Start development server
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+The site will be available at `http://localhost:3000`
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+## Project Structure
 
-**Use GitHub Codespaces**
+```
+├── app/                  # Next.js App Router pages
+├── src/
+│   ├── components/       # React components
+│   │   ├── ui/          # shadcn/ui components
+│   │   └── ...          # Feature components
+│   ├── hooks/           # Custom React hooks
+│   ├── lib/             # Utility functions
+│   └── index.css        # Global styles
+├── public/              # Static assets
+└── ...
+```
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+## Features
 
-## What technologies are used for this project?
+- Interactive particle background with mouse interaction
+- Dark/Light mode support
+- GitHub contribution graph integration
+- Responsive design (mobile-first)
+- SEO optimized
+- Performance optimized (60fps animations)
 
-This project is built with:
+## Deployment
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+Build for production:
 
-## Can I connect a custom domain to my Lovable project?
+```sh
+npm run build
+```
 
-Yes, you can!
+## License
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+MIT

@@ -1,6 +1,7 @@
 
 import { Code, Rocket, Users, Trophy } from "lucide-react";
 import { Card, CardContent } from "./ui/card";
+import { GitHubContributions } from "./GitHubContributions";
 
 export const AboutContent = () => {
   const highlights = [
@@ -36,17 +37,20 @@ export const AboutContent = () => {
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div className="text-center mb-16">
+      <div className="text-center mb-12">
         <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gradient">
           About Me
         </h2>
-        <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+        <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed mb-10">
           Full-stack engineer passionate about building scalable, high-performance
           applications that solve real-world problems.
         </p>
+        <div className="max-w-4xl mx-auto">
+          <GitHubContributions username="DarpanNeve" />
+        </div>
       </div>
 
-      <div className="grid lg:grid-cols-2 gap-12 items-start mb-16">
+      <div className="grid lg:grid-cols-2 gap-12 items-start mb-8">
         <div className="space-y-6">
           <h3 className="text-3xl font-bold text-foreground">
             Crafting Digital Solutions
