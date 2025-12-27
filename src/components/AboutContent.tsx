@@ -23,7 +23,7 @@ export const AboutContent = () => {
       icon: Users,
       title: "Technical Leadership",
       description:
-        "Directed technical initiatives and community workshops for 700+ developers, fostering best practices in mobile development and software architecture.",
+        "Led community initiatives and technical workshops for 700+ developers, fostering best practices in mobile development and software architecture.",
       color: "text-pink-500",
     },
     {
@@ -61,7 +61,7 @@ export const AboutContent = () => {
             robust full-stack web platforms, I deliver solutions that drive measurable results.
           </p>
           <p className="text-lg text-muted-foreground leading-relaxed">
-            My approach combines technical excellence with business acumen -
+            My approach combines technical excellence with a product mindset -
             understanding not just how to build software, but why it matters.
             Whether collaborating with teams or working independently on projects,
             I bring the same commitment to quality and innovation.

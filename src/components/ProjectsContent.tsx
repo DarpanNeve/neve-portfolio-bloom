@@ -14,7 +14,7 @@ export const projects = [
     description:
       "Production-grade habit tracker with GitHub-style analytics, voice assistant integration, and comprehensive widget support.",
     longDescription:
-      "Enterprise-level habit tracking application built with Flutter and Drift (SQLite), featuring GitHub-style contribution graphs for visual consistency tracking, interactive home screen widgets, and production-ready voice assistant integration (Google Assistant & Siri). Implements clean architecture with comprehensive error handling, offline-first with background sync, fuzzy matching algorithms for natural language processing, and WCAG AA accessibility compliance. The codebase follows SOLID principles with 90%+ test coverage, structured logging, Sentry integration, and optimized database queries with proper indexing for sub-100ms response times.",
+      "Production-grade habit tracking application built with Flutter and Drift (SQLite), featuring GitHub-style contribution graphs for visual consistency tracking, interactive home screen widgets, and production-ready voice assistant integration (Google Assistant & Siri). Implements clean architecture with comprehensive error handling, offline-first with background sync, fuzzy matching algorithms for natural language processing, and WCAG AA accessibility compliance. The codebase follows SOLID principles with 90%+ test coverage, structured logging, Sentry integration, and optimized database queries with proper indexing for sub-100ms response times.",
     technologies: [
       "Flutter",
       "Dart",
@@ -132,11 +132,11 @@ export const projects = [
   },
   {
     title: "Vastav Intellect",
-    category: "Business Consulting Platform",
+    category: "Corporate Web Platform",
     description:
-      "Professional consulting website with modern full-stack architecture and optimized user experience.",
+      "Professional corporate website with modern full-stack architecture and optimized user experience.",
     longDescription:
-      "Comprehensive business consulting platform built with React and Node.js, featuring modern component architecture, responsive design, and SEO optimization. Implements professional UI/UX design principles, efficient state management, and performance optimization techniques. The backend includes proper API design, database optimization, and security best practices for business applications.",
+      "Comprehensive corporate platform built with React and Node.js, featuring modern component architecture, responsive design, and SEO optimization. Implements professional UI/UX design principles, efficient state management, and performance optimization techniques. The backend includes proper API design, database optimization, and security best practices for business applications.",
     technologies: [
       "React",
       "Node.js",

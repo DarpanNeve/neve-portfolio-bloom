@@ -12,6 +12,8 @@ export const Footer = () => {
           {/* Copyright */}
           <div className="flex items-center space-x-2 text-muted-foreground">
             <span>© {currentYear} Darpan Neve. All rights reserved.</span>
+            <span className="text-sm">•</span>
+            <span className="text-sm">Designed & Built by Darpan Neve</span>
           </div>
 
           {/* Back to top */}

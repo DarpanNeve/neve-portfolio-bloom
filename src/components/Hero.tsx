@@ -25,7 +25,7 @@ export const Hero = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10 py-20">
         <div className={`transition-all duration-1000 ease-out transform ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           <p className="text-base md:text-lg text-muted-foreground mb-4 font-mono tracking-wide">
-            Software Engineer & System Architect
+            Full-Stack Software Engineer
           </p>
 
           <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold mb-6 tracking-tight">

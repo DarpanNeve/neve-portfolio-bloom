@@ -52,7 +52,7 @@ const FEATURED_GIGS: Gig[] = [
     },
     {
         title: 'Vastav Intellect',
-        category: 'Consulting',
+        category: 'Corporate Web',
         color: 'from-cyan-400 to-blue-600',
         icon: '💼',
         tech: ['React', 'Node.js', 'MongoDB'],
