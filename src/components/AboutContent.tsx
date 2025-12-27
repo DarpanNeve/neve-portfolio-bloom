@@ -9,28 +9,28 @@ export const AboutContent = () => {
       icon: Code,
       title: "Full-Stack Expertise",
       description:
-        "Delivering end-to-end solutions with modern frameworks - React, Node.js, Python, and Flutter for web and mobile platforms.",
+        "Architecting end-to-end solutions with modern frameworks - React, Node.js, Python, and Flutter for enterprise-grade web and mobile platforms.",
       color: "text-primary",
     },
     {
       icon: Rocket,
-      title: "Performance-Driven",
+      title: "Performance Engineering",
       description:
-        "Built production systems serving 1000+ users with optimized performance, 30% faster load times, and 45% improved throughput.",
+        "Optimizing production systems serving 1000+ users, achieving 30% faster load times and 45% improved throughput via advanced caching and code-splitting.",
       color: "text-purple-500",
     },
     {
       icon: Users,
-      title: "Leadership & Mentoring",
+      title: "Technical Leadership",
       description:
-        "Led GDSC PCCoE as Flutter Head, organized 15+ technical events with 700+ participants, and mentored aspiring developers.",
+        "Directed technical initiatives and community workshops for 700+ developers, fostering best practices in mobile development and software architecture.",
       color: "text-pink-500",
     },
     {
       icon: Trophy,
-      title: "Proven Track Record",
+      title: "Industry Recognition",
       description:
-        "2nd Runner-up at National Hackathon BLUE-BIT and multiple awards across competitive coding events nationwide.",
+        "Recognized for innovation in scalable systems at national level competitions and excellence in algorithm optimization.",
       color: "text-cyan-400",
     },
   ];

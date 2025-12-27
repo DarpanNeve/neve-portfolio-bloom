@@ -23,9 +23,9 @@ export const Hero = () => {
       <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-transparent to-background pointer-events-none z-[1]" aria-hidden="true" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10 py-20">
-        <div className={`transition-opacity duration-700 ${isLoaded ? 'opacity-100' : 'opacity-100'}`}>
+        <div className={`transition-all duration-1000 ease-out transform ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           <p className="text-base md:text-lg text-muted-foreground mb-4 font-mono tracking-wide">
-            Full-Stack Software Engineer
+            Software Engineer & System Architect
           </p>
 
           <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold mb-6 tracking-tight">
@@ -36,14 +36,14 @@ export const Hero = () => {
 
           <div className="h-20 flex items-center justify-center mb-8">
             <h2 className="text-xl md:text-3xl font-medium text-foreground max-w-4xl leading-relaxed">
-              Building scalable digital experiences with
-              <span className="text-primary font-semibold"> modern technology</span>
+              Engineering scalable, high-performance systems for the
+              <span className="text-primary font-semibold"> modern web</span>
             </h2>
           </div>
 
           <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto mb-12 leading-relaxed">
-            Specializing in Flutter, FastAPI, and React to create
-            high-performance web and mobile applications that drive results.
+            Specializing in distributed cloud architecture, advanced React patterns, and full-cycle product engineering.
+            Transforming complex requirements into robust, production-grade solutions.
           </p>
 
           <nav className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8" aria-label="Primary navigation">
@@ -51,11 +51,11 @@ export const Hero = () => {
               <Button
                 size="lg"
                 className="group relative overflow-hidden bg-primary hover:bg-primary/90 text-primary-foreground font-semibold px-8 py-6 rounded-full transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-primary/30"
-                aria-label="Contact for work opportunities"
+                aria-label="Contact me"
               >
                 <span className="relative z-10 flex items-center gap-2">
                   <Send className="h-5 w-5" aria-hidden="true" />
-                  Let's Work Together
+                  Contact Me
                 </span>
               </Button>
             </Link>

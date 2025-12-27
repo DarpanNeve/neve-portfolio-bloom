@@ -51,17 +51,14 @@ export const ContactContent = () => {
         <div className="space-y-8">
           <div>
             <h3 className="text-3xl font-bold text-foreground mb-6">
-              Open to Opportunities
+              Available for Hire
             </h3>
             <div className="space-y-4 text-lg text-muted-foreground leading-relaxed">
               <p>
-                I'm currently <span className="text-foreground font-semibold">seeking full-time opportunities</span> where
-                I can contribute my skills in building scalable, production-grade applications.
+                I am focused on building <span className="text-foreground font-semibold">scalable, production-ready systems</span> that drive real business value.
               </p>
               <p>
-                With proven experience shipping applications to real users and a commitment to
-                code quality, I'm ready to make an impact on your team. Let's connect and explore
-                how we can work together.
+                I am currently seeking <span className="text-foreground font-semibold">full-time engineering roles</span> where I can leverage my expertise in distributed systems and performance optimization. I am ready to bring immediate value to a forward-thinking engineering team.
               </p>
             </div>
           </div>

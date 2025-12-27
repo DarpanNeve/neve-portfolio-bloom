@@ -356,51 +356,6 @@ export const ProjectsClient = ({ children }: { children: React.ReactNode }) => {
         </div>
       )}
 
-      <style
-        dangerouslySetInnerHTML={{
-          __html: `
-          .animate-fade-in {
-            animation: fadeIn 0.3s ease-out forwards;
-          }
-          .animate-scale-in {
-            animation: scaleIn 0.3s ease-out forwards;
-          }
-
-          .line-clamp-3 {
-            display: -webkit-box;
-            -webkit-line-clamp: 3;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-          }
-
-          @keyframes fadeIn {
-            from {
-              opacity: 0;
-            }
-            to {
-              opacity: 1;
-            }
-          }
-
-          @keyframes scaleIn {
-            from {
-              transform: scale(0.95);
-              opacity: 0;
-            }
-            to {
-              transform: scale(1);
-              opacity: 1;
-            }
-          }
-
-          @media (max-width: 640px) {
-            .line-clamp-3 {
-              -webkit-line-clamp: 2;
-            }
-          }
-        `,
-        }}
-      />
     </>
   );
 };
