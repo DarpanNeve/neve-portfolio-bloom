@@ -1,5 +1,6 @@
 "use client";
 import { useState, useEffect, useRef } from "react";
+import Image from "next/image";
 import { ExternalLink, Github, X, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -90,10 +91,12 @@ export const ProjectsClient = ({ children }: { children: React.ReactNode }) => {
                 {/* Project Image */}
                 <div className="relative aspect-video overflow-hidden bg-gradient-to-br from-primary/10 to-purple-500/10">
                   {project.image ? (
-                    <img
+                    <Image
                       src={project.image}
                       alt={`${project.title} preview`}
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                      fill
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                      className="object-cover group-hover:scale-110 transition-transform duration-700"
                     />
                   ) : (
                     <div className="w-full h-full flex items-center justify-center">
@@ -235,11 +238,12 @@ export const ProjectsClient = ({ children }: { children: React.ReactNode }) => {
               {/* Hero Image Section */}
               <div className="relative h-64 md:h-80 bg-gradient-to-br from-primary/20 to-purple-500/20 overflow-hidden">
                 {selectedProject.image ? (
-                  <img
+                  <Image
                     src={selectedProject.image}
                     alt={`${selectedProject.title} screenshot`}
-                    className="w-full h-full object-cover"
-                    onError={(e) => (e.currentTarget.style.display = "none")}
+                    fill
+                    sizes="(max-width: 768px) 100vw, 80vw"
+                    className="object-cover"
                   />
                 ) : (
                   <div className="w-full h-full flex items-center justify-center">

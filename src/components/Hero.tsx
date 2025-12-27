@@ -3,8 +3,13 @@ import { ChevronDown, Send, Briefcase, Download } from "lucide-react";
 import { Button } from "./ui/button";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { ParticleField } from "./ParticleField";
+import dynamic from 'next/dynamic';
 import { HeroGigs } from "./HeroGigs";
+
+const ParticleField = dynamic(() => import('./ParticleField').then(mod => mod.ParticleField), {
+  ssr: false,
+  loading: () => <div className="absolute inset-0 bg-background" />
+});
 
 export const Hero = () => {
   const [isLoaded, setIsLoaded] = useState(false);
